@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { Auth, Home, Management, ShoppingList } from "./views";
+import { Auth, Home, Management, Article } from "./views";
 import * as actions from "./redux/actions";
 
 function App() {
@@ -21,33 +21,22 @@ function App() {
           <Routes>
             <Route path='management'>
               <Route path='user' element={<Management.ManagementUser />} />
-              <Route
-                path='product'
-                element={<Management.ManagementProduct />}
-              />
+              <Route path='place'>
+                <Route index element={<Management.ManagementPlace />} />
+                <Route path='create' element={<Management.CreatePlace />} />
+                <Route path='edit/:id' element={<Management.EditPlace />} />
+              </Route>
+              <Route path='category'>
+                <Route index element={<Management.ManagementCategory />} />
+                <Route path='create' element={<Management.CreateCategory />} />
+                <Route path='edit/:id' element={<Management.EditCategory />} />
+              </Route>
             </Route>
-            <Route path='product'>
-              <Route index element={<Management.ManagementProduct />} />
-              <Route
-                path='create'
-                element={<Management.CreateProduct />}
-              />{" "}
-              <Route path='edit/:id' element={<Management.EditProduct />} />
-            </Route>
-            <Route path='shopping-list'>
-              <Route index element={<ShoppingList.ShoppingListManagement />} />
-              <Route
-                path='create'
-                element={<ShoppingList.CreateShoppingList />}
-              />{" "}
-              <Route
-                path='detail/:id'
-                element={<ShoppingList.DetailShoppingList />}
-              />{" "}
-              <Route
-                path='edit/:id'
-                element={<ShoppingList.EditShoppingList />}
-              />{" "}
+            <Route path='article'>
+              <Route index element={<Article.ManagementArticle />} />
+              <Route path='create' element={<Article.CreateArticle />} />
+              <Route path='view/:id' element={<Article.ViewArticle />} />
+              <Route path='edit/:id' element={<Article.EditArticle />} />
             </Route>
             <Route path='dashboard'>
               <Route index element={<div>dashboard index</div>} />
