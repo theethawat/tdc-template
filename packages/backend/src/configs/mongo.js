@@ -5,7 +5,7 @@ console.log('Waiting for connection to', config.dbConnectionString);
 // Database
 mongoose.connect(config.dbConnectionString, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useUnifiedTopology: true,
 });
 
 const db = mongoose.connection;
