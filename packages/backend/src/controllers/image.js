@@ -1,9 +1,9 @@
 import Mongoose from 'mongoose';
 import MainService from '../services/MainService';
-import ImageModel from '../models/Image';
+import AssetModel from '../models/Asset';
 import uploadService from '../services/uploadService';
 
-const ImageService = new MainService(ImageModel, 'image');
+const AssetService = new MainService(AssetModel, 'asset');
 
 export const onReadAll = async (req, res) => {
   try {
@@ -18,7 +18,7 @@ export const onReadAll = async (req, res) => {
         ],
       };
     }
-    const result = await ImageService.getAll({
+    const result = await AssetService.getAll({
       ...req.query,
       query,
     });
@@ -30,7 +30,7 @@ export const onReadAll = async (req, res) => {
 
 export const onReadOne = async (req, res) => {
   try {
-    const result = await ImageService.getOne(req.params.id);
+    const result = await AssetService.getOne(req.params.id);
     res.status(200).send(result);
   } catch (error) {
     res.status(404).send({ error });
@@ -39,7 +39,7 @@ export const onReadOne = async (req, res) => {
 
 export const onCreateOne = async (req, res) => {
   try {
-    const result = await ImageService.createOne(req.body);
+    const result = await AssetService.createOne(req.body);
     res.status(201).send(result);
   } catch (error) {
     res.status(400).send({ error });
@@ -48,7 +48,7 @@ export const onCreateOne = async (req, res) => {
 
 export const onEditOne = async (req, res) => {
   try {
-    await ImageService.updateOne(req.params.id, req.body);
+    await AssetService.updateOne(req.params.id, req.body);
     res.status(200).send({ message: 'Successfully Update' });
   } catch (error) {
     res.status(400).send({ error });
@@ -57,7 +57,7 @@ export const onEditOne = async (req, res) => {
 
 export const onDeleteOne = async (req, res) => {
   try {
-    await ImageService.deleteOne(req.params.id);
+    await AssetService.deleteOne(req.params.id);
     res.status(204).send({ message: 'Delete Success' });
   } catch (error) {
     res.status(400).send({ error });
@@ -68,7 +68,7 @@ export const onUploadFile = async (req, res) => {
   try {
     const fileSize = parseInt(req.headers['content-length'], 10);
     const imageURL = await uploadService(req?.file, fileSize);
-    const result = await ImageService.createOne({
+    const result = await AssetService.createOne({
       url: imageURL,
       ...req?.body,
     });
