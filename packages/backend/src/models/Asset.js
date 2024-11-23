@@ -8,6 +8,8 @@ const AssetSchema = new Schema(
     name: String,
     project: { type: Mongoose.Types.ObjectId, ref: 'Project' },
     type: { type: String, default: 'image' },
+    // If Attached to a Notebook
+    notebook: { type: Mongoose.Types.ObjectId, ref: 'Notebook' },
   },
   {
     timestamps: true,

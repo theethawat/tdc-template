@@ -55,6 +55,14 @@ export const uploadService = async (file, fileSize) => {
       contentType = 'image/jpeg';
     }
 
+    if (_.endsWith(originalname, '.pdf')) {
+      contentType = 'application/pdf';
+    }
+
+    if (_.endsWith(originalname, '.doc')) {
+      contentType = 'application/msword';
+    }
+
     const uploadBlobResponse = await blockBlobClient.upload(buffer, fileSize, {
       blobHTTPHeaders: {
         blobContentType: contentType,

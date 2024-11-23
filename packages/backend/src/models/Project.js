@@ -7,6 +7,7 @@ const ProjectSchema = new Schema(
     name: String,
     description: String,
     start_date: Date,
+    expected_date: Date,
     completed: { type: Boolean, default: false },
   },
   {

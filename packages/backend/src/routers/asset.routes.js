@@ -1,7 +1,7 @@
 /* eslint-disable import/no-named-as-default-member */
 import express from 'express';
 import multer from 'multer';
-import imageController from '../controllers/image';
+import assetController from '../controllers/asset';
 
 import config from '../configs/app';
 import authMiddleWare from '../middleware/auth';
@@ -26,20 +26,20 @@ const limits = {
 
 const upload = multer({ storage, fileFilter, limits });
 
-router.get('/', imageController.onReadAll);
-router.get('/:id', imageController.onReadOne);
-router.put('/:id', authMiddleWare.verifyRequest, imageController.onEditOne);
-router.post('/', authMiddleWare.verifyRequest, imageController.onCreateOne);
+router.get('/', assetController.onReadAll);
+router.get('/:id', assetController.onReadOne);
+router.put('/:id', authMiddleWare.verifyRequest, assetController.onEditOne);
+router.post('/', authMiddleWare.verifyRequest, assetController.onCreateOne);
 router.delete(
   '/:id',
   authMiddleWare.verifyRequest,
-  imageController.onDeleteOne,
+  assetController.onDeleteOne,
 );
 router.post(
   '/upload',
   authMiddleWare.verifyRequest,
   upload.single('files'),
-  imageController.onUploadFile,
+  assetController.onUploadFile,
 );
 
 export default router;

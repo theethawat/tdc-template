@@ -2,14 +2,19 @@ import Mongoose from 'mongoose';
 
 const { Schema } = Mongoose;
 
-const LockbookListSchema = new Schema(
+const LogbookSchema = new Schema(
   {
-    title: String,
     description: String,
     date: Date,
     project: { type: Mongoose.Types.ObjectId, ref: 'Project' },
     private: { type: Boolean, default: false },
     user: { type: Mongoose.Types.ObjectId, ref: 'User' },
+    attached_notebook: [
+      {
+        type: Mongoose.Types.ObjectId,
+        ref: 'Notebook',
+      },
+    ],
   },
   {
     timestamps: true,
@@ -17,10 +22,10 @@ const LockbookListSchema = new Schema(
 );
 
 // eslint-disable-next-line prefer-arrow-callback
-LockbookListSchema.pre('save', function (next) {
+LogbookSchema.pre('save', function (next) {
   next();
 });
 
-const LockbookListModel = Mongoose.model('LockbookList', LockbookListSchema);
+const LogBookModel = Mongoose.model('LogBook', LogbookSchema);
 
-export default LockbookListModel;
+export default LogBookModel;

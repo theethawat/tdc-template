@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import config from '../configs/app';
+import mongoose from 'mongoose';
 
 class MainService {
   constructor(selectedModel, name) {
@@ -45,7 +46,12 @@ class MainService {
     }
   }
 
-  async aggregation({ page = 1, size = config.defaultLimit, pipeline = [] }) {
+  async aggregation({
+    page = 1,
+    size = config.defaultLimit,
+    pipeline = [],
+    lookupPipeline = [],
+  }) {
     try {
       const allPipeline = pipeline;
 
@@ -60,6 +66,7 @@ class MainService {
             {
               $limit: parseInt(size, 10) || config.pageLimit,
             },
+            ...lookupPipeline,
           ],
         },
       });
@@ -92,6 +99,26 @@ class MainService {
       return result;
     } catch (error) {
       throw Error('DB_FALSE_READ Database fetching have problem', error);
+    }
+  }
+
+  async getOneAggregate({ id = '', pipeline = [], lookupPipeline = [] }) {
+    try {
+      const allPipeline = [
+        {
+          $match: { _id: mongoose.Types.ObjectId(id) },
+        },
+        ...pipeline,
+        ...lookupPipeline,
+      ];
+
+      const result = await this.selectedModel.aggregate(allPipeline);
+      const data = result[0];
+
+      return data;
+    } catch (error) {
+      console.error(error.message);
+      throw error;
     }
   }
 
