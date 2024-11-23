@@ -9,11 +9,21 @@ export const onReadAll = async (req, res) => {
   try {
     let query = {};
 
-    if (req?.query?.article) {
+    if (req?.query?.project) {
       query = {
         $or: [
           {
-            article: Mongoose.Types.ObjectId(req?.query?.article),
+            project: Mongoose.Types.ObjectId(req?.query?.project),
+          },
+        ],
+      };
+    }
+
+    if (req?.query?.notebook) {
+      query = {
+        $or: [
+          {
+            notebook: Mongoose.Types.ObjectId(req?.query?.notebook),
           },
         ],
       };

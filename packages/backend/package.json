@@ -19,6 +19,7 @@
     "@babel/register": "^7.14.5",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dayjs": "^1.11.13",
     "dotenv": "^10.0.0",
     "eslint-plugin-import": "^2.25.3",
     "express": "^4.17.1",
