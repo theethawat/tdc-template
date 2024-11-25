@@ -1,29 +1,29 @@
 import {
-  ARTICLE_ALL,
-  ARTICLE_CREATE,
-  ARTICLE_DELETE,
-  ARTICLE_EDIT,
-  ARTICLE_ERROR,
-  ARTICLE_GET,
+  PROJECT_ALL,
+  PROJECT_CREATE,
+  PROJECT_DELETE,
+  PROJECT_EDIT,
+  PROJECT_ERROR,
+  PROJECT_GET,
 } from "../type";
 
 const initialState = { isReady: false };
 
 // eslint-disable-next-line no-unused-vars
 // eslint-disable-next-line default-param-last
-export default function ArticleReducer(state = initialState, action) {
+export default function ProjectReducer(state = initialState, action) {
   switch (action.type) {
-    case ARTICLE_ALL:
+    case PROJECT_ALL:
       return { ...action.payload, isReady: true };
-    case ARTICLE_GET:
+    case PROJECT_GET:
       return { ...action.payload, isReady: true };
-    case ARTICLE_CREATE:
+    case PROJECT_CREATE:
       return { ...action.payload, isReady: false };
-    case ARTICLE_ERROR:
+    case PROJECT_ERROR:
       return { ...action.payload, isReady: false };
-    case ARTICLE_EDIT:
+    case PROJECT_EDIT:
       return { isReady: false };
-    case ARTICLE_DELETE:
+    case PROJECT_DELETE:
       return { isReady: false };
 
     default:

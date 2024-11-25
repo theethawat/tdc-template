@@ -1,29 +1,29 @@
 import {
-  CATEGORY_ALL,
-  CATEGORY_CREATE,
-  CATEGORY_DELETE,
-  CATEGORY_EDIT,
-  CATEGORY_ERROR,
-  CATEGORY_GET,
+  NOTEBOOK_ALL,
+  NOTEBOOK_CREATE,
+  NOTEBOOK_DELETE,
+  NOTEBOOK_EDIT,
+  NOTEBOOK_ERROR,
+  NOTEBOOK_GET,
 } from "../type";
 
 const initialState = { isReady: false };
 
 // eslint-disable-next-line no-unused-vars
 // eslint-disable-next-line default-param-last
-export default function CategoryReducer(state = initialState, action) {
+export default function NotebookReducer(state = initialState, action) {
   switch (action.type) {
-    case CATEGORY_ALL:
+    case NOTEBOOK_ALL:
       return { ...action.payload, isReady: true };
-    case CATEGORY_GET:
+    case NOTEBOOK_GET:
       return { ...action.payload, isReady: true };
-    case CATEGORY_CREATE:
+    case NOTEBOOK_CREATE:
       return { ...action.payload, isReady: false };
-    case CATEGORY_ERROR:
+    case NOTEBOOK_ERROR:
       return { ...action.payload, isReady: false };
-    case CATEGORY_EDIT:
+    case NOTEBOOK_EDIT:
       return { isReady: false };
-    case CATEGORY_DELETE:
+    case NOTEBOOK_DELETE:
       return { isReady: false };
 
     default:

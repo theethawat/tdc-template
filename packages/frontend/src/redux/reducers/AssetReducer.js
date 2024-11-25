@@ -1,29 +1,29 @@
 import {
-  PLACE_ALL,
-  PLACE_CREATE,
-  PLACE_DELETE,
-  PLACE_EDIT,
-  PLACE_ERROR,
-  PLACE_GET,
+  ASSET_ALL,
+  ASSET_CREATE,
+  ASSET_DELETE,
+  ASSET_EDIT,
+  ASSET_ERROR,
+  ASSET_GET,
 } from "../type";
 
 const initialState = { isReady: false };
 
 // eslint-disable-next-line no-unused-vars
 // eslint-disable-next-line default-param-last
-export default function PlaceReducer(state = initialState, action) {
+export default function AssetReducer(state = initialState, action) {
   switch (action.type) {
-    case PLACE_ALL:
+    case ASSET_ALL:
       return { ...action.payload, isReady: true };
-    case PLACE_GET:
+    case ASSET_GET:
       return { ...action.payload, isReady: true };
-    case PLACE_CREATE:
+    case ASSET_CREATE:
       return { ...action.payload, isReady: false };
-    case PLACE_ERROR:
+    case ASSET_ERROR:
       return { ...action.payload, isReady: false };
-    case PLACE_EDIT:
+    case ASSET_EDIT:
       return { isReady: false };
-    case PLACE_DELETE:
+    case ASSET_DELETE:
       return { isReady: false };
 
     default:

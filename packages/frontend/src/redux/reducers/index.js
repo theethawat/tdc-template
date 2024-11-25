@@ -1,17 +1,19 @@
 import { combineReducers } from "redux";
 
 import MeReducer from "./MeReducers";
-import PlaceReducer from "./PlaceReducer";
-import CategoryReducer from "./CategoryReducer";
-import ImageReducer from "./ImageReducer";
-import ArticleReducer from "./ArticleReducer";
+import AssetReducer from "./AssetReducer";
+import LogbookReducer from "./LogbookReducer";
+import NotebookReducer from "./NotebookReducer";
+import ProjectReducer from "./ProjectReducer";
+import TimelineReducer from "./TimelineReducer";
 
 const rootReducers = combineReducers({
   me: MeReducer,
-  place: PlaceReducer,
-  category: CategoryReducer,
-  image: ImageReducer,
-  article: ArticleReducer,
+  project: ProjectReducer,
+  asset: AssetReducer,
+  logbook: LogbookReducer,
+  notebook: NotebookReducer,
+  timeline: TimelineReducer,
 });
 
 export default rootReducers;

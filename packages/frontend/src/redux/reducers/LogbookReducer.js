@@ -1,29 +1,29 @@
 import {
-  IMAGE_ALL,
-  IMAGE_CREATE,
-  IMAGE_DELETE,
-  IMAGE_EDIT,
-  IMAGE_ERROR,
-  IMAGE_GET,
+  LOGBOOK_ALL,
+  LOGBOOK_CREATE,
+  LOGBOOK_DELETE,
+  LOGBOOK_EDIT,
+  LOGBOOK_ERROR,
+  LOGBOOK_GET,
 } from "../type";
 
 const initialState = { isReady: false };
 
 // eslint-disable-next-line no-unused-vars
 // eslint-disable-next-line default-param-last
-export default function ImageReducer(state = initialState, action) {
+export default function LogbookReducer(state = initialState, action) {
   switch (action.type) {
-    case IMAGE_ALL:
+    case LOGBOOK_ALL:
       return { ...action.payload, isReady: true };
-    case IMAGE_GET:
+    case LOGBOOK_GET:
       return { ...action.payload, isReady: true };
-    case IMAGE_CREATE:
+    case LOGBOOK_CREATE:
       return { ...action.payload, isReady: false };
-    case IMAGE_ERROR:
+    case LOGBOOK_ERROR:
       return { ...action.payload, isReady: false };
-    case IMAGE_EDIT:
+    case LOGBOOK_EDIT:
       return { isReady: false };
-    case IMAGE_DELETE:
+    case LOGBOOK_DELETE:
       return { isReady: false };
 
     default:
