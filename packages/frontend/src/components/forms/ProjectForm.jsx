@@ -51,9 +51,11 @@ const ProjectForm = ({ control, defaultValue }) => {
       <div className='my-2 w-full md:w-1/2 md:pl-2'>
         <Controller
           control={control}
-          name={`end_date`}
+          name={`expected_date`}
           defaultValue={
-            defaultValue?.end_date ? dayjs(defaultValue.end_date) : null
+            defaultValue?.expected_date
+              ? dayjs(defaultValue.expected_date)
+              : null
           }
           render={({ field }) => (
             <FormControl>

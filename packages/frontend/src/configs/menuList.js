@@ -7,24 +7,9 @@ import {
 
 const menuList = [
   {
-    name: "จัดการรายการ",
-    link: "/article",
+    name: "โปรเจกต์",
+    link: "/project",
     icon: faListAlt,
-  },
-  {
-    name: "เพิ่มจัดการรายการ",
-    link: "/article/create",
-    icon: faPlus,
-  },
-  {
-    name: "จัดการสถานที่จัดแสดง",
-    link: "/management/place",
-    icon: faTv,
-  },
-  {
-    name: "จัดการหมวดหมู่",
-    link: "/management/category",
-    icon: faList,
   },
 ];
 

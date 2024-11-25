@@ -87,7 +87,7 @@ export default function ManagementProject() {
                 </p>
                 <p className='text-gray-400 text-sm'>
                   {dayjs(each?.start_date).format("D MMM YYYY")} -{" "}
-                  {dayjs(each?.end_date).format("D MMM YYYY")}
+                  {dayjs(each?.expected_date).format("D MMM YYYY")}
                 </p>
               </Card>
             </Link>
