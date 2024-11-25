@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { Auth, Home, Management, Article } from "./views";
+import { Auth, Home, Management, Project } from "./views";
 import * as actions from "./redux/actions";
 
 function App() {
@@ -21,22 +21,10 @@ function App() {
           <Routes>
             <Route path='management'>
               <Route path='user' element={<Management.ManagementUser />} />
-              <Route path='place'>
-                <Route index element={<Management.ManagementPlace />} />
-                <Route path='create' element={<Management.CreatePlace />} />
-                <Route path='edit/:id' element={<Management.EditPlace />} />
-              </Route>
-              <Route path='category'>
-                <Route index element={<Management.ManagementCategory />} />
-                <Route path='create' element={<Management.CreateCategory />} />
-                <Route path='edit/:id' element={<Management.EditCategory />} />
-              </Route>
             </Route>
-            <Route path='article'>
-              <Route index element={<Article.ManagementArticle />} />
-              <Route path='create' element={<Article.CreateArticle />} />
-              <Route path='view/:id' element={<Article.ViewArticle />} />
-              <Route path='edit/:id' element={<Article.EditArticle />} />
+            <Route path='project'>
+              <Route index element={<Project.ManagementProject />} />
+              <Route path='create' element={<Project.CreateProject />} />
             </Route>
             <Route path='dashboard'>
               <Route index element={<div>dashboard index</div>} />

@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { app } from "../../configs";
 import * as actions from "../../redux/actions";
 /* This example requires Tailwind CSS v2.0+ */
-import logoVan from "../../logovan.png";
+import mylogo from "../../theethawatlogo.png";
 
 export default function NavHeader({ userData, currentPage }) {
   const dispatch = useDispatch();
@@ -19,9 +19,9 @@ export default function NavHeader({ userData, currentPage }) {
         <div className='flex flex-wrap items-center justify-between p-4 '>
           <Link
             to='/'
-            className='flex items-center space-x-3 rtl:space-x-reverse'
+            className='flex items-center space-x-3 rtl:space-x-reverse md:ml-16'
           >
-            <img src={logoVan} className='h-8' alt='App Logo' />
+            <img src={mylogo} className='h-8' alt='App Logo' />
             <span className='self-center text-lg font-semibold  whitespace-nowrap dark:text-white font-display'>
               {app.appNameTH}
             </span>
