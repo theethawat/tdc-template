@@ -2,6 +2,7 @@
 
 Project Management Tools for Theethawat and The Duck Creator.
 Including the project components like Logbook, Note, Timeline and Task.
+![Frontpage](frontpage.png)
 
 ## Development
 

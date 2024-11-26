@@ -13,7 +13,7 @@ export const readAllUser = async ({ page = 1, size = config.defaultLimit }) => {
     const payload = { rows: user, total: _.size(user) };
     return payload;
   } catch (error) {
-    throw Error('DB_FALSE_READ Database fetching have problem', error);
+    throw Error(`DB_FALSE_READ Database fetching have problem ${error}`);
   }
 };
 
@@ -22,7 +22,10 @@ export const readOneUser = async (id) => {
     const user = await UserModel.findById(id);
     return user;
   } catch (error) {
-    throw Error('DB_FALSE_READ Database fetching have problem', error);
+    console.error('Error', error?.message);
+    throw Error(
+      `DB_FALSE_READ Database fetching have problem ${error.message}`,
+    );
   }
 };
 
@@ -44,7 +47,10 @@ export const createOneUser = async (payload) => {
     await user.save();
     return user;
   } catch (error) {
-    throw Error('DB_FALSE_CREATE Database creating have problem', error);
+    console.error('Error', error?.message);
+    throw Error(
+      `DB_FALSE_CREATE Database creating have problem ${error.message}`,
+    );
   }
 };
 

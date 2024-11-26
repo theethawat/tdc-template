@@ -130,8 +130,7 @@ class MainService {
       return result;
     } catch (error) {
       throw Error(
-        `DB_FALSE_CREATE Database creating ${this.name} have problem`,
-        error,
+        `DB_FALSE_CREATE Database creating ${this.name} have problem ${error.message}`,
       );
     }
   }
