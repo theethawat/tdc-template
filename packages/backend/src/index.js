@@ -18,8 +18,8 @@ app.use(passport.initialize());
 
 // Frontend Routing
 app.use('/', staticRoute);
-app.use('/article', staticRoute);
-app.use('/article/*', staticRoute);
+app.use('/project', staticRoute);
+app.use('/project/*', staticRoute);
 app.use('/management/', staticRoute);
 app.use('/management/*', staticRoute);
 

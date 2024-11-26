@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { app } from "../../configs";
-import logovan from "../../logovan.png";
+import logovan from "../../theethawatlogo.png";
 import { Footer } from "../navbar";
 
 export default function AuthLayout({ title, children }) {
@@ -21,10 +21,7 @@ export default function AuthLayout({ title, children }) {
           <div className='flex items-center justify-between h-16'>
             <div className='flex items-center gap-2'>
               <div className='flex-shrink-0'>
-                <img className='h-8 w-8' src={logovan} alt='App Logo' />
-              </div>
-              <div className='text-xl font-display font-semibold'>
-                {app.appNameTH}
+                <img className='h-8 ' src={logovan} alt='App Logo' />
               </div>
             </div>
           </div>
