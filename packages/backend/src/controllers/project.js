@@ -12,6 +12,10 @@ const createPipeline = (req) => {
       },
     });
   }
+
+  pipeline.push({
+    $sort: { createdAt: -1 },
+  });
   return pipeline;
 };
 

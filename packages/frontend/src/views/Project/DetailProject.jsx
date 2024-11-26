@@ -63,29 +63,31 @@ export default function DetailProject() {
         <div className='mx-2'>
           <Card variant='plain'>
             <div className='flex flex-wrap '>
-              <div className='w-full md:w-1/4 lg:w-1/6 p-2'>
+              <div className='w-full md:w-1/4 lg:w-1/5 p-2'>
                 <div className='text-sm'>วันที่เริ่ม</div>
                 <div className='text-lg font-semibold'>
                   {dayjs(project?.start_date).format("D MMM YYYY")}
                 </div>
               </div>
-              <div className='w-full md:w-1/4 lg:w-1/6 p-2'>
+              <div className='w-full md:w-1/4 lg:w-1/5 p-2'>
                 <div className='text-sm'>วันที่สิ้นสุด</div>
                 <div className='text-lg font-semibold'>
                   {dayjs(project?.expected_date).format("D MMM YYYY")}
                 </div>
               </div>{" "}
-              <div className='w-full md:w-1/4 lg:w-1/6 p-2'>
+              <div className='w-full md:w-1/4 lg:w-1/5 p-2'>
                 <div className='text-sm'>สถานะ</div>
                 <div className='text-lg font-semibold'>
                   {project?.completed ? "เสร็จสิ้น" : "ยังดำเนินการ"}
                 </div>
               </div>
-              <div className='w-full md:w-1/4 lg:w-1/2 p-2'>
+              <div className='w-full md:w-1/4 lg:w-1/5 p-2'>
                 <div className='flex gap-1 justify-end'>
-                  <Button startDecorator={<FontAwesomeIcon icon={faBook} />}>
-                    Log Book
-                  </Button>
+                  <Link to={`/project/logbook/${project?._id}`}>
+                    <Button startDecorator={<FontAwesomeIcon icon={faBook} />}>
+                      Log Book
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

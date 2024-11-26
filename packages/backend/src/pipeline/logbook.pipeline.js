@@ -37,7 +37,7 @@ export const createMainPipeline = (req) => {
   if (req?.query?.project) {
     pipeline.push({
       $match: {
-        project: mongoose.Types.ObjectId(req?.query?.project),
+        project: new mongoose.Types.ObjectId(req?.query?.project),
       },
     });
   }
@@ -45,7 +45,7 @@ export const createMainPipeline = (req) => {
   if (req?.query?.user) {
     pipeline.push({
       $match: {
-        user: mongoose.Types.ObjectId(req?.query?.user),
+        user: new mongoose.Types.ObjectId(req?.query?.user),
       },
     });
   }
@@ -57,6 +57,11 @@ export const createMainPipeline = (req) => {
       },
     });
   }
+
+  pipeline.push({
+    $sort: { date: -1 },
+  });
+
   return pipeline;
 };
 

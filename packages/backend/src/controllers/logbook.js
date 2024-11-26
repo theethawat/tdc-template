@@ -19,6 +19,7 @@ export const onReadAll = async (req, res) => {
     });
     res.status(200).send(result);
   } catch (error) {
+    console.error('Error', error);
     res.status(404).send({ error });
   }
 };

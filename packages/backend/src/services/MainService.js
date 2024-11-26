@@ -106,7 +106,7 @@ class MainService {
     try {
       const allPipeline = [
         {
-          $match: { _id: mongoose.Types.ObjectId(id) },
+          $match: { _id: new mongoose.Types.ObjectId(id) },
         },
         ...pipeline,
         ...lookupPipeline,

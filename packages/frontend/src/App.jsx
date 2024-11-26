@@ -27,6 +27,15 @@ function App() {
               <Route path='create' element={<Project.CreateProject />} />{" "}
               <Route path='detail/:id' element={<Project.DetailProject />} />
               <Route path='edit/:id' element={<Project.EditProject />} />
+              <Route path='logbook/:id' element={<Project.ProjectLogBooks />} />
+              <Route
+                path='logbook/create/:id'
+                element={<Project.CreateLogBook />}
+              />{" "}
+              <Route
+                path='logbook/edit/:id'
+                element={<Project.EditLogbook />}
+              />
             </Route>
             <Route path='dashboard'>
               <Route index element={<div>dashboard index</div>} />
