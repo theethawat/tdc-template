@@ -3,18 +3,26 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Button, Card, LinearProgress } from "@mui/joy";
+import { List, Avatar } from "antd";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { faTrash, faPencil, faBook } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faPencil,
+  faBook,
+  faAdd,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import dayjs from "dayjs";
-
+import _ from "lodash";
 import { MainLayout } from "../../components/layouts";
 import * as actions from "../../redux/actions";
 
 export default function DetailProject() {
   const dispatch = useDispatch();
   const project = useSelector((state) => state.project);
+  const notebook = useSelector((state) => state.notebook);
   const params = useParams();
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     dispatch(actions.getOneProject(params.id))
@@ -24,6 +32,8 @@ export default function DetailProject() {
       .catch((err) => {
         alert(err);
       });
+
+    dispatch(actions.getAllNotebook({ project: params.id, page: 1, size: 5 }));
 
     return () => {};
   }, [params]);
@@ -95,6 +105,62 @@ export default function DetailProject() {
           <div className='my-4'>
             <div className='font-display font-semibold text-sm'>รายละเอียด</div>
             <div>{project?.description}</div>
+          </div>
+          <div className='my-2'>
+            <div className='flex flex-wrap'>
+              <div className='w-full md:w-1/2 pr-1'>
+                <div className='flex justify-between items-center'>
+                  <h2 className='font-semibold font-display text-lg'>
+                    Notebook
+                  </h2>
+                  <div className='flex gap-1'>
+                    <Link to={`/project/notebook/${project?._id}`}>
+                      <Button
+                        startDecorator={<FontAwesomeIcon icon={faBook} />}
+                      >
+                        ดูทั้งหมด
+                      </Button>
+                    </Link>
+                    <Link to={`/project/notebook/create/${project?._id}`}>
+                      <Button
+                        startDecorator={<FontAwesomeIcon icon={faAdd} />}
+                        color='neutral'
+                      >
+                        เพิ่ม
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className='my-2'>
+                  <List
+                    itemLayout='vertical'
+                    size='large'
+                    pagination={{
+                      onChange: (tempPage) => {
+                        setPage(tempPage);
+                      },
+                      pageSize: 5,
+                    }}
+                    bordered
+                    dataSource={notebook?.rows}
+                    renderItem={(item) => (
+                      <List.Item key={item.title}>
+                        <List.Item.Meta
+                          avatar={<Avatar>{_.first(item.user?.name)}</Avatar>}
+                          title={
+                            <Link to={`/project/notebook/detail/${item._id}`}>
+                              {item.title}
+                            </Link>
+                          }
+                          description={dayjs(item.date).format("D MMM YYYY")}
+                        />
+                        {_.truncate(item.description, { length: 100 })}
+                      </List.Item>
+                    )}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </MainLayout>

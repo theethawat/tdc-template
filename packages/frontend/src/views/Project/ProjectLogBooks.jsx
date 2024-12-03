@@ -154,9 +154,6 @@ export default function ProjectLogBooks() {
               <div className='w-4/5 px-2 md:px-4 font-sans'>
                 <div className='flex justify-between'>
                   <div className='text-sm font-display flex items-center'>
-                    <Avatar size='sm'>
-                      {_.first(each?.user?.name || "Unknown")}
-                    </Avatar>
                     {each?.user?.name || "Unknown User"}
                   </div>
                   <div className='flex gap-1'>

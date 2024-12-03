@@ -5,6 +5,10 @@ import EditProject from "./EditProject";
 import ProjectLogBooks from "./ProjectLogBooks";
 import CreateLogBook from "./CreateLogbook";
 import EditLogbook from "./EditLogbook";
+import CreateNotebook from "./CreateNotebook";
+import ProjectNotebook from "./ProjectNotebook";
+import DetailNotebook from "./DetailNotebook";
+import EditNotebook from "./EditNotebook";
 
 export default {
   ManagementProject,
@@ -14,4 +18,8 @@ export default {
   ProjectLogBooks,
   CreateLogBook,
   EditLogbook,
+  CreateNotebook,
+  ProjectNotebook,
+  DetailNotebook,
+  EditNotebook,
 };

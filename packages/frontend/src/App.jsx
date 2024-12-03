@@ -33,6 +33,22 @@ function App() {
                 element={<Project.CreateLogBook />}
               />{" "}
               <Route
+                path='notebook/create/:id'
+                element={<Project.CreateNotebook />}
+              />{" "}
+              <Route
+                path='notebook/detail/:id'
+                element={<Project.DetailNotebook />}
+              />{" "}
+              <Route
+                path='notebook/edit/:id'
+                element={<Project.EditNotebook />}
+              />{" "}
+              <Route
+                path='notebook/:id'
+                element={<Project.ProjectNotebook />}
+              />{" "}
+              <Route
                 path='logbook/edit/:id'
                 element={<Project.EditLogbook />}
               />

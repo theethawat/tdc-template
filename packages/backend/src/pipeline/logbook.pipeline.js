@@ -50,6 +50,17 @@ export const createMainPipeline = (req) => {
     });
   }
 
+  if (req?.query?.name) {
+    pipeline.push({
+      $match: {
+        title: {
+          $regex: req?.query?.name,
+          $options: 'i',
+        },
+      },
+    });
+  }
+
   if (req?.query?.public) {
     pipeline.push({
       $match: {
