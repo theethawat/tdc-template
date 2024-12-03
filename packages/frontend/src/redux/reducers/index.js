@@ -6,6 +6,7 @@ import LogbookReducer from "./LogbookReducer";
 import NotebookReducer from "./NotebookReducer";
 import ProjectReducer from "./ProjectReducer";
 import TimelineReducer from "./TimelineReducer";
+import UserReducer from "./UserReducer";
 
 const rootReducers = combineReducers({
   me: MeReducer,
@@ -14,6 +15,7 @@ const rootReducers = combineReducers({
   logbook: LogbookReducer,
   notebook: NotebookReducer,
   timeline: TimelineReducer,
+  user: UserReducer,
 });
 
 export default rootReducers;

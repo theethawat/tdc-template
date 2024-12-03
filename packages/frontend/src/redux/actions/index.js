@@ -4,3 +4,4 @@ export * from "./ProjectAction";
 export * from "./LogbookAction";
 export * from "./NotebookAction";
 export * from "./TimelineAction";
+export * from "./UserAction";

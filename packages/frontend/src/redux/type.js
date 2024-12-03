@@ -37,3 +37,10 @@ export const TIMELINE_CREATE = "TIMELINE_CREATE";
 export const TIMELINE_EDIT = "TIMELINE_EDIT";
 export const TIMELINE_ERROR = "TIMELINE_ERROR";
 export const TIMELINE_DELETE = "TIMELINE_DELETE";
+
+export const USER_GET = "USER_GET";
+export const USER_ALL = "USER_ALL";
+export const USER_CREATE = "USER_CREATE";
+export const USER_EDIT = "USER_EDIT";
+export const USER_ERROR = "USER_ERROR";
+export const USER_DELETE = "USER_DELETE";
