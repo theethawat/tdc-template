@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": " cd backend &&  nodemon src/Server/app.js  ",
-    "dev": "nx  run-many -t dev -p tdc-my-project-frontend  tdc-my-project-backend "
+    "dev": "nx  run-many -t dev -p tdc-my-project-frontend  tdc-my-project-backend ",
+    "build:frontend": "nx  run tdc-my-project-frontend:build"
   },
   "repository": {
     "type": "git",
