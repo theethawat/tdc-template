@@ -3,9 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        display: "IBM Plex Sans Thai",
-      },
+      // fontFamily: {
+      //   display: "IBM Plex Sans Thai",
+      // },
       colors: {
         tdc: {
           50: "#32ffe4",

@@ -24,13 +24,14 @@ export default function MainLayout({
     <div>
       <div className='min-h-screen'>
         <NavHeader userData={me} currentPage={currentPage} />
+
         <div className='flex flex-wrap'>
           <div className='lg:w-1/6 hidden lg:block'>
             <Sidebar menuList={menuList} />
           </div>
           <div className='lg:w-3/4'>
             <div className='w-full py-6 md:mx-12  container px-4 lg:px-8  '>
-              <div className='flex justify-between mt-20 w-full '>
+              <div className='flex justify-between  w-full '>
                 <div className='w-3/5 '>
                   <Breadcrumbs aria-label='breadcrumbs' size='sm'>
                     {hirachyList.map((item) => (

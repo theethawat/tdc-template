@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { CssVarsProvider } from "@mui/joy/styles";
+import { MantineProvider } from "@mantine/core";
+
 import { Provider } from "react-redux";
+import "@mantine/core/styles.css";
 
 import App from "./App.jsx";
 import "./index.css";
@@ -14,9 +16,9 @@ const store = configureStore();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <CssVarsProvider theme={themeConfig}>
-        <App />{" "}
-      </CssVarsProvider>
+      <MantineProvider theme={themeConfig}>
+        <App />
+      </MantineProvider>
     </Provider>
   </React.StrictMode>
 );

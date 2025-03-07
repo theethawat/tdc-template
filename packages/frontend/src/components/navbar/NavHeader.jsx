@@ -1,46 +1,142 @@
-import React from "react";
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/joy";
 import PropTypes from "prop-types";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
-import { app } from "../../configs";
-import * as actions from "../../redux/actions";
-/* This example requires Tailwind CSS v2.0+ */
-import mylogo from "../../theethawatlogo.png";
+
+import {
+  IconChevronDown,
+  IconHeart,
+  IconLogout,
+  IconMessage,
+  IconPlayerPause,
+  IconSettings,
+  IconStar,
+  IconSwitchHorizontal,
+  IconTrash,
+} from "@tabler/icons-react";
+import classes from "../../assets/css/HeaderTab.module.css";
+import {
+  Avatar,
+  Burger,
+  Container,
+  Group,
+  Menu,
+  Tabs,
+  Text,
+  UnstyledButton,
+  useMantineTheme,
+} from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+
+const user = {
+  name: "Jane Spoonfighter",
+  email: "janspoon@fighter.dev",
+  image:
+    "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png",
+};
 
 export default function NavHeader({ userData, currentPage }) {
   const dispatch = useDispatch();
+  const theme = useMantineTheme();
+  const [opened, { toggle }] = useDisclosure(false);
+  const [userMenuOpened, setUserMenuOpened] = useState(false);
+
   return (
-    <div>
-      <nav className='bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600'>
-        <div className='flex flex-wrap items-center justify-between p-4 '>
-          <Link
-            to='/'
-            className='flex items-center space-x-3 rtl:space-x-reverse md:ml-16'
+    <div className={classes.header}>
+      <Container className={classes.mainSection} size='md'>
+        <Group justify='space-between'>
+          <div>Website Title</div>
+
+          <Menu
+            width={260}
+            position='bottom-end'
+            transitionProps={{ transition: "pop-top-right" }}
+            onClose={() => setUserMenuOpened(false)}
+            onOpen={() => setUserMenuOpened(true)}
+            withinPortal
           >
-            <img src={mylogo} className='h-8' alt='App Logo' />
-            <span className='self-center text-lg font-semibold  whitespace-nowrap dark:text-white font-display'>
-              {app.appNameTH}
-            </span>
-          </Link>
-          <div className=''>
-            <Button
-              variant='outlined'
-              color='neutral'
-              onClick={() => dispatch(actions.meLogOut())}
-            >
-              <FontAwesomeIcon
-                icon={faArrowRightFromBracket}
-                className='mr-2'
-              />
-              ลงชื่อออก
-            </Button>
-          </div>
-        </div>
-      </nav>
+            <Menu.Target>
+              <UnstyledButton>
+                <Group gap={7}>
+                  <Avatar
+                    src={user.image}
+                    alt={user.name}
+                    radius='xl'
+                    size={20}
+                  />
+                  <Text fw={500} size='sm' lh={1} mr={3}>
+                    {userData.name}
+                  </Text>
+                  <IconChevronDown size={12} stroke={1.5} />
+                </Group>
+              </UnstyledButton>
+            </Menu.Target>
+            <Menu.Dropdown>
+              <Menu.Item
+                leftSection={
+                  <IconHeart
+                    size={16}
+                    color={theme.colors.red[6]}
+                    stroke={1.5}
+                  />
+                }
+              >
+                Liked posts
+              </Menu.Item>
+              <Menu.Item
+                leftSection={
+                  <IconStar
+                    size={16}
+                    color={theme.colors.yellow[6]}
+                    stroke={1.5}
+                  />
+                }
+              >
+                Saved posts
+              </Menu.Item>
+              <Menu.Item
+                leftSection={
+                  <IconMessage
+                    size={16}
+                    color={theme.colors.blue[6]}
+                    stroke={1.5}
+                  />
+                }
+              >
+                Your comments
+              </Menu.Item>
+
+              <Menu.Label>Settings</Menu.Label>
+              <Menu.Item leftSection={<IconSettings size={16} stroke={1.5} />}>
+                Account settings
+              </Menu.Item>
+              <Menu.Item
+                leftSection={<IconSwitchHorizontal size={16} stroke={1.5} />}
+              >
+                Change account
+              </Menu.Item>
+              <Menu.Item leftSection={<IconLogout size={16} stroke={1.5} />}>
+                Logout
+              </Menu.Item>
+
+              <Menu.Divider />
+
+              <Menu.Label>Danger zone</Menu.Label>
+              <Menu.Item
+                leftSection={<IconPlayerPause size={16} stroke={1.5} />}
+              >
+                Pause subscription
+              </Menu.Item>
+              <Menu.Item
+                color='red'
+                leftSection={<IconTrash size={16} stroke={1.5} />}
+              >
+                Delete account
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+        </Group>
+      </Container>
     </div>
   );
 }

@@ -14,13 +14,13 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:7000/api/v1/user/register
+POST http://localhost:3001/api/v1/user/register
 Content-Type: application/json
 
 {
-    "name":"Theethawat",
-    "username":"theethawat",
-    "password":"Tttt_2544",
+    "name":"Theethawat Savastham",
+    "username":"admin",
+    "password":"admin",
     "role":"USER"
 }
 
