@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
-import _ from "lodash";
+import jwt from 'jsonwebtoken';
+import _ from 'lodash';
 
-import config from "../configs/app";
+import config from '../configs/app';
 const secret = config.secret;
 
 const generateToken = (payload) => {
@@ -9,7 +9,7 @@ const generateToken = (payload) => {
     const token = jwt.sign(payload, secret);
     return token;
   } catch (error) {
-    throw new Error("Token cannot generate", error);
+    throw new Error('Token cannot generate', error);
   }
 };
 
@@ -25,23 +25,23 @@ const verifyToken = (token) => {
     return false;
   } catch (error) {
     console.error(error.message);
-    throw new Error("Cannot Verify your token", error);
+    throw new Error('Cannot Verify your token', error);
   }
 };
 
 const verifyRequest = async (req, res, next) => {
   const bearerToken = req.headers.authorization;
-  const token = _.last(_.split(bearerToken, " "));
+  const token = _.last(_.split(bearerToken, ' '));
   try {
     if (verifyToken(token) === true) {
-      console.log("Verify Request Pass");
+      console.log('Verify Request Pass');
       next();
     } else {
-      console.log("Cannot Verify Request");
+      console.log('Cannot Verify Request');
       res.status(403);
     }
   } catch (error) {
-    console.log("Cannot Verify Request", error.message);
+    console.log('Cannot Verify Request', error.message);
 
     res.status(403);
   }

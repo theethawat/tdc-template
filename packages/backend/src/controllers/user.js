@@ -1,8 +1,21 @@
-import UserService from '../services/user';
-import MainService from '../services/MainService';
+import GeneralController from './GeneralController';
 import UserModel from '../models/User';
+import middleware from '../middleware/auth';
 
-const UserFromMainService = new MainService(UserModel, 'user');
+const UserFromMainService = new GeneralController(UserModel, 'user');
+
+export const getUserAfterLogin = async (data) => {
+  try {
+    const payload = {
+      ...data,
+      authToken: middleware.generateToken({ username: data?.username }),
+    };
+    return payload;
+  } catch (error) {
+    throw Error('LOGIN_FAIL Logging in Fail cannot find user');
+  }
+};
+
 export const onReadAll = async (req, res) => {
   try {
     const pipeline = [];
@@ -65,7 +78,7 @@ export const onDeleteOne = async (req, res) => {
 export const onLogin = async (req, res) => {
   try {
     console.log('On Login');
-    const result = await UserService.getUserAfterLogin(req.user);
+    const result = await getUserAfterLogin(req.user);
     res.status(200).send(result);
   } catch (error) {
     res.status(403).send({ error });

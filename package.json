@@ -1,17 +1,17 @@
 {
-  "name": "tdc-my-project",
+  "name": "@iarc-programing/tp2025",
   "version": "1.0.0",
   "description": "## Frontend",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": " cd backend &&  nodemon src/Server/app.js  ",
-    "dev": "nx  run-many -t dev -p tdc-my-project-frontend  tdc-my-project-backend ",
-    "build:frontend": "nx  run tdc-my-project-frontend:build"
+    "dev": "nx  run-many -t dev -p @iarc-programing/tp2025-frontend  @iarc-programing/tp2025-backend ",
+    "build:frontend": "nx  run @iarc-programing/tp2025-frontend:build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theethawat/tdc-my-project"
+    "url": "git+https://github.com/theethawat/@iarc-programing/tp2025"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +27,7 @@
     "nodemon": "^2.0.6",
     "nx": "20.1.3"
   },
-  "homepage": "https:/github.com/theethawat/tdc-my-project#readme",
+  "homepage": "https:/github.com/theethawat/@iarc-programing/iaec-tdc-tin-template-2025-open#readme",
   "nx": {},
   "workspaces": [
     "packages/*"

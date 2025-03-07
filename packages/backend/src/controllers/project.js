@@ -1,7 +1,7 @@
-import MainService from '../services/MainService';
+import GeneralController from './GeneralController';
 import ProjectModel from '../models/Project';
 
-const ProjectService = new MainService(ProjectModel, 'project');
+const ProjectService = new GeneralController(ProjectModel, 'project');
 
 const createPipeline = (req) => {
   const pipeline = [];
