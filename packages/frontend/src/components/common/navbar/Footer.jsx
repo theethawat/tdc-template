@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import version from "../../version.json";
+import version from "../../../version.json";
 function Footer() {
   return (
     <div className='bottom-0'>

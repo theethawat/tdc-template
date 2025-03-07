@@ -5,7 +5,7 @@ import { Button } from "@mui/joy";
 import { useNavigate } from "react-router-dom";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavHeader, Footer } from "../navbar";
+import { NavHeader, Footer } from "../common/navbar";
 
 // eslint-disable-next-line max-len
 export default function NoSidebarLayout({

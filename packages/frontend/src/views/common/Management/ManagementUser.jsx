@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Table } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { MainLayout } from "../../components/layouts";
+import { MainLayout } from "../../../components/layouts";
 import { Button } from "@mui/joy";
-import * as actions from "../../redux/actions";
+import * as actions from "../../../redux/actions";
 
 export default function ManagementUser() {
   const dispatch = useDispatch();

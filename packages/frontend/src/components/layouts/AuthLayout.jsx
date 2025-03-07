@@ -1,9 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React from "react";
 import PropTypes from "prop-types";
-import { app } from "../../configs";
-import logovan from "../../theethawatlogo.png";
-import { Footer } from "../navbar";
+import { Footer } from "../common/navbar";
 
 export default function AuthLayout({ title, children }) {
   return (
@@ -20,9 +18,7 @@ export default function AuthLayout({ title, children }) {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='flex items-center justify-between h-16'>
             <div className='flex items-center gap-2'>
-              <div className='flex-shrink-0'>
-                <img className='h-8 ' src={logovan} alt='App Logo' />
-              </div>
+              <div className='flex-shrink-0'></div>
             </div>
           </div>
         </div>

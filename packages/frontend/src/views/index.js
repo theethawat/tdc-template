@@ -1,7 +1,6 @@
-import Auth from "./Auth";
+import Auth from "./common/Auth";
 import Home from "./Home";
-import Management from "./Management";
-import Project from "./Project";
+import Management from "./common/Management";
 
-export { Auth, Home, Management, Project };
-export default { Auth, Home, Management, Project };
+export { Auth, Home, Management };
+export default { Auth, Home, Management };

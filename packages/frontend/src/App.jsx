@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { Auth, Home, Management, Project } from "./views";
+import { Auth, Home, Management } from "./views";
 import * as actions from "./redux/actions";
 
 function App() {
@@ -22,37 +22,7 @@ function App() {
             <Route path='management'>
               <Route path='user' element={<Management.ManagementUser />} />
             </Route>
-            <Route path='project'>
-              <Route index element={<Project.ManagementProject />} />
-              <Route path='create' element={<Project.CreateProject />} />{" "}
-              <Route path='detail/:id' element={<Project.DetailProject />} />
-              <Route path='edit/:id' element={<Project.EditProject />} />
-              <Route path='logbook/:id' element={<Project.ProjectLogBooks />} />
-              <Route
-                path='logbook/create/:id'
-                element={<Project.CreateLogBook />}
-              />{" "}
-              <Route
-                path='notebook/create/:id'
-                element={<Project.CreateNotebook />}
-              />{" "}
-              <Route
-                path='notebook/detail/:id'
-                element={<Project.DetailNotebook />}
-              />{" "}
-              <Route
-                path='notebook/edit/:id'
-                element={<Project.EditNotebook />}
-              />{" "}
-              <Route
-                path='notebook/:id'
-                element={<Project.ProjectNotebook />}
-              />{" "}
-              <Route
-                path='logbook/edit/:id'
-                element={<Project.EditLogbook />}
-              />
-            </Route>
+
             <Route path='dashboard'>
               <Route index element={<div>dashboard index</div>} />
             </Route>

@@ -14,7 +14,7 @@ import {
   IconSwitchHorizontal,
   IconTrash,
 } from "@tabler/icons-react";
-import classes from "../../assets/css/HeaderTab.module.css";
+import classes from "../../../assets/css/HeaderTab.module.css";
 import {
   Avatar,
   Burger,
@@ -27,13 +27,8 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-
-const user = {
-  name: "Jane Spoonfighter",
-  email: "janspoon@fighter.dev",
-  image:
-    "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png",
-};
+import { information } from "@iarc-programing/tp2025-constants";
+import Avvvatars from "avvvatars-react";
 
 export default function NavHeader({ userData, currentPage }) {
   const dispatch = useDispatch();
@@ -45,7 +40,9 @@ export default function NavHeader({ userData, currentPage }) {
     <div className={classes.header}>
       <Container className={classes.mainSection} size='md'>
         <Group justify='space-between'>
-          <div>Website Title</div>
+          <Link to='/'>
+            <div className='text-lg font-semibold'>{information.title}</div>
+          </Link>
 
           <Menu
             width={260}
@@ -58,12 +55,7 @@ export default function NavHeader({ userData, currentPage }) {
             <Menu.Target>
               <UnstyledButton>
                 <Group gap={7}>
-                  <Avatar
-                    src={user.image}
-                    alt={user.name}
-                    radius='xl'
-                    size={20}
-                  />
+                  <Avvvatars value={userData.name} style='shape' />
                   <Text fw={500} size='sm' lh={1} mr={3}>
                     {userData.name}
                   </Text>
@@ -120,19 +112,6 @@ export default function NavHeader({ userData, currentPage }) {
               </Menu.Item>
 
               <Menu.Divider />
-
-              <Menu.Label>Danger zone</Menu.Label>
-              <Menu.Item
-                leftSection={<IconPlayerPause size={16} stroke={1.5} />}
-              >
-                Pause subscription
-              </Menu.Item>
-              <Menu.Item
-                color='red'
-                leftSection={<IconTrash size={16} stroke={1.5} />}
-              >
-                Delete account
-              </Menu.Item>
             </Menu.Dropdown>
           </Menu>
         </Group>

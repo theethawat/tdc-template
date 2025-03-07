@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { NavHeader, Footer, Sidebar } from "../navbar";
-import menuList from "../../configs/menuList";
+import { NavHeader, Footer, Sidebar } from "../common/navbar";
+import menuList from "../../configs/general/menuList";
 
 // eslint-disable-next-line max-len
 export default function MainLayout({
@@ -27,7 +27,7 @@ export default function MainLayout({
 
         <div className='flex flex-wrap'>
           <div className='lg:w-1/6 hidden lg:block'>
-            <Sidebar menuList={menuList} />
+            <Sidebar menuList={menuList} userData={me} />
           </div>
           <div className='lg:w-3/4'>
             <div className='w-full py-6 md:mx-12  container px-4 lg:px-8  '>
