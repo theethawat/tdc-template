@@ -3,7 +3,7 @@ import api from "../../configs/api";
 class GeneralAction {
   // prettier-ignore
   constructor(subURL, name, {
-    allConst, oneConst, errorConst, createConst, updateConst, deleteConst,
+    allConst, oneConst, errorConst, createConst, updateConst, deleteConst,loadingConst
   }) {
     this.subURL = subURL
     this.allConst = allConst
@@ -12,6 +12,7 @@ class GeneralAction {
     this.createConst = createConst
     this.updateConst = updateConst
     this.deleteConst = deleteConst
+    this.loadingConst = loadingConst
     this.name = name
   }
 
@@ -19,6 +20,9 @@ class GeneralAction {
     return async (dispatch) => {
       try {
         const queryParams = new URLSearchParams({ page, size, name, ...query });
+        dispatch({
+          type: this.loadingConst,
+        });
         const { data, status } = await api.get(
           `${import.meta.env.VITE_API_URL}/${
             this.subURL

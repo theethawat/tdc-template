@@ -5,28 +5,23 @@ import {
   USER_EDIT,
   USER_ERROR,
   USER_GET,
+  USER_LOADING,
 } from "../type";
 
 const initialState = { isReady: false };
+import { GeneralReducer } from "../class";
 
-// eslint-disable-next-line no-unused-vars
-// eslint-disable-next-line default-param-last
-export default function UserReducer(state = initialState, action) {
-  switch (action.type) {
-    case USER_ALL:
-      return { ...action.payload, isReady: true };
-    case USER_GET:
-      return { ...action.payload, isReady: true };
-    case USER_CREATE:
-      return { ...action.payload, isReady: false };
-    case USER_ERROR:
-      return { ...action.payload, isReady: false };
-    case USER_EDIT:
-      return { isReady: false };
-    case USER_DELETE:
-      return { isReady: false };
+const basedReducerObject = new GeneralReducer({
+  allConst: USER_ALL,
+  getConst: USER_GET,
+  postConst: USER_CREATE,
+  putConst: USER_EDIT,
+  deleteConst: USER_DELETE,
+  errorConst: USER_ERROR,
+  loadingConst: USER_LOADING,
+});
 
-    default:
-      return state;
-  }
-}
+const UserReducer = (state = initialState, action) =>
+  basedReducerObject.getReducer(state, action);
+
+export default UserReducer;
