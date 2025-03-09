@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { Auth, Home, Management } from "./views";
+import { Auth, Home, Management, Utility } from "./views";
 import * as actions from "./redux/actions";
 
 function App() {
@@ -21,6 +21,8 @@ function App() {
           <Routes>
             <Route path='management'>
               <Route path='user' element={<Management.ManagementUser />} />
+              <Route path='user/create' element={<Management.CreateUser />} />
+              <Route path='*' element={<Utility.Error404 />} />
             </Route>
 
             <Route path='dashboard'>

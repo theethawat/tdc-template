@@ -1,14 +1,12 @@
 /* This example requires Tailwind CSS v2.0+ */
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-import { Button } from "@mui/joy";
-import { Breadcrumbs, Text } from "@mantine/core";
+import { Breadcrumbs, Text, Button } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { NavHeader, Footer, Sidebar } from "../common/navbar";
 import menuList from "../../configs/general/menuList";
+import { IconChevronLeft } from "@tabler/icons-react";
 
 // eslint-disable-next-line max-len
 export default function MainLayout({
@@ -52,15 +50,12 @@ export default function MainLayout({
                   {useBackButton && (
                     <div>
                       <Button
-                        color='neutral'
+                        color='gray'
                         onClick={() => {
                           navigate(-1);
                         }}
+                        leftSection={<IconChevronLeft size={18} />}
                       >
-                        <FontAwesomeIcon
-                          icon={faChevronLeft}
-                          className='mr-2'
-                        />
                         กลับ
                       </Button>
                     </div>
