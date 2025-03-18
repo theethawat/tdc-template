@@ -10,6 +10,7 @@ import "./index.css";
 import "./assets/fonts/font.css";
 import themeConfig from "./themeConfig";
 import configureStore from "./redux/configureStore";
+import NotifyProvider from "./components/common/notify/NotifyProvider.jsx";
 
 const store = configureStore();
 
@@ -17,7 +18,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       <MantineProvider theme={themeConfig}>
-        <App />
+        <NotifyProvider>
+          <App />
+        </NotifyProvider>
       </MantineProvider>
     </Provider>
   </React.StrictMode>

@@ -23,12 +23,12 @@ export default function MainLayout({
     <div>
       <div className='min-h-screen'>
         <NavHeader userData={me} currentPage={currentPage} />
-        <div className='flex flex-wrap'>
-          <div className='lg:w-1/6 hidden lg:block'>
+        <div className='flex flex-wrap max-w-full'>
+          <div className='lg:w-1/4 xl:w-1/5 hidden lg:block'>
             <Sidebar menuList={menuList} userData={me} />
           </div>
           <div className='lg:w-3/4'>
-            <div className='w-full py-6 md:mx-12  container px-4 lg:px-8  '>
+            <div className=' py-6 md:pl-8  px-4 lg:pl-8 lg:ml-8'>
               <div className='flex justify-between  w-full '>
                 <div className='w-3/5 '>
                   <div className='ml-2'>

@@ -90,7 +90,9 @@ class GeneralAction {
           });
         }
       } catch (error) {
+        console.log("error", error?.response?.data);
         dispatch({ type: this.errorConst, payload: { error: error?.message } });
+        throw Error(error?.response?.data?.error?.message);
       }
     };
   }
@@ -116,6 +118,7 @@ class GeneralAction {
         }
       } catch (error) {
         dispatch({ type: this.errorConst, payload: { error: error?.message } });
+        throw Error(error?.response?.data?.error?.message);
       }
     };
   }

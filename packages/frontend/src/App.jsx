@@ -17,7 +17,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        {window.localStorage.getItem("TDC_TOKEN") ? (
+        {window.localStorage.getItem("APP_TOKEN") ? (
           <Routes>
             <Route path='management'>
               <Route path='user' element={<Management.ManagementUser />} />

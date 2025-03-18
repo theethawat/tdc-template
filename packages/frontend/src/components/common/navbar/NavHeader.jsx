@@ -8,33 +8,28 @@ import {
   IconHeart,
   IconLogout,
   IconMessage,
-  IconPlayerPause,
   IconSettings,
   IconStar,
   IconSwitchHorizontal,
-  IconTrash,
 } from "@tabler/icons-react";
 import classes from "../../../assets/css/HeaderTab.module.css";
 import {
-  Avatar,
-  Burger,
   Container,
   Group,
   Menu,
-  Tabs,
   Text,
   UnstyledButton,
   useMantineTheme,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
 import { information } from "@iarc-programing/tp2025-constants";
 import Avvvatars from "avvvatars-react";
-
+import * as actions from "../../../redux/actions";
+import { useNavigate } from "react-router-dom";
 export default function NavHeader({ userData, currentPage }) {
   const dispatch = useDispatch();
   const theme = useMantineTheme();
-  const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className={classes.header}>
@@ -107,7 +102,13 @@ export default function NavHeader({ userData, currentPage }) {
               >
                 Change account
               </Menu.Item>
-              <Menu.Item leftSection={<IconLogout size={16} stroke={1.5} />}>
+              <Menu.Item
+                leftSection={<IconLogout size={16} stroke={1.5} />}
+                onClick={() => {
+                  dispatch(actions.meLogOut());
+                  navigate("/login");
+                }}
+              >
                 Logout
               </Menu.Item>
 
