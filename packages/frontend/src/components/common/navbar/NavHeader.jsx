@@ -25,7 +25,7 @@ import { information } from "@iarc-programing/tp2025-constants";
 import Avvvatars from "avvvatars-react";
 import * as actions from "../../../redux/actions";
 import { useNavigate } from "react-router-dom";
-export default function NavHeader({ userData, currentPage }) {
+export default function NavHeader({ userData }) {
   const dispatch = useDispatch();
   const theme = useMantineTheme();
   const [userMenuOpened, setUserMenuOpened] = useState(false);

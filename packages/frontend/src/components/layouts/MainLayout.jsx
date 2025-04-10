@@ -11,7 +11,6 @@ import { IconChevronLeft } from "@tabler/icons-react";
 // eslint-disable-next-line max-len
 export default function MainLayout({
   title,
-  currentPage,
   rightContainer,
   useBackButton,
   hirachyList = ["หน้าหลัก"],
@@ -23,7 +22,7 @@ export default function MainLayout({
   return (
     <div>
       <div className='min-h-screen'>
-        <NavHeader userData={me} currentPage={currentPage} />
+        <NavHeader userData={me} />
         <div className='flex flex-wrap max-w-full'>
           <div className='lg:w-1/4 xl:w-1/5 hidden lg:block'>
             <Sidebar menuList={menuList} userData={me} />

@@ -2,29 +2,31 @@ const process = require("node:process");
 const createModelFile = require("./script/createModelFile.js");
 const createControllerFile = require("./script/createControllerFile.js");
 const createRouterFile = require("./script/createRouterFiles.js");
+const createActionFile = require("./script/createActionFile.js");
+const createReducerFile = require("./script/createReducerFile.js");
 
 process.on("exit", (code) => {
   console.log(`About to exit with code: ${code}`);
 });
 
 const main = () => {
-  const notCreateModelIndex =
-    process.argv.indexOf("-nm") || process.argv.indexOf("--no-model");
-  const notCreateControllerIndex =
-    process.argv.indexOf("-nc") || process.argv.indexOf("--no-controller");
-  const notCreateRouterIndex =
-    process.argv.indexOf("-nr") || process.argv.indexOf("--no-router");
-  let createModel = true;
-  let createRouter = true;
-  let createController = true;
   const modelName = process.argv[2];
 
-  // Checking Condition
-  if (notCreateModelIndex > -1) createModel = false;
+  if (!modelName) {
+    console.error("Please provide a model name.");
+    process.exit(1);
+  }
 
-  if (notCreateControllerIndex > -1) createController = false;
-
-  if (notCreateRouterIndex > -1) createRouter = false;
+  const createModel =
+    !process.argv.includes("-nm") && !process.argv.includes("--no-model");
+  const createController =
+    !process.argv.includes("-nc") && !process.argv.includes("--no-controller");
+  const createRouter =
+    !process.argv.includes("-nr") && !process.argv.includes("--no-router");
+  const createAction =
+    !process.argv.includes("-na") && !process.argv.includes("--no-action");
+  const createReducer =
+    !process.argv.includes("-nre") && !process.argv.includes("--no-reducer");
 
   if (!modelName) {
     console.error("Please provide a model name.");
@@ -40,6 +42,12 @@ const main = () => {
   }
   if (createRouter) {
     createRouterFile(modelName);
+  }
+  if (createAction) {
+    createActionFile(modelName);
+  }
+  if (createReducer) {
+    createReducerFile(modelName);
   }
 
   console.log("Create File Script Successfully Run");
