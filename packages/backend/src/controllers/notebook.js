@@ -1,10 +1,10 @@
-import MainService from '../services/MainService';
+import GeneralController from './GeneralController';
 import NotebookModel from '../models/Notebook';
 
 // It use the same, so we will not write it again we use from logbook
 import { createMainPipeline } from '../pipeline/logbook.pipeline';
 
-const NotebookService = new MainService(NotebookModel, 'notebook');
+const NotebookService = new GeneralController(NotebookModel, 'notebook');
 
 const lookupPipeline = [
   {

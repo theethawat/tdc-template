@@ -1,11 +1,11 @@
-import MainService from '../services/MainService';
+import GeneralController from './GeneralController';
 import LogbookModel from '../models/Logbook';
 import {
   createLookupPipeline,
   createMainPipeline,
 } from '../pipeline/logbook.pipeline';
 
-const LogbookService = new MainService(LogbookModel, 'logbook');
+const LogbookService = new GeneralController(LogbookModel, 'logbook');
 
 export const onReadAll = async (req, res) => {
   try {

@@ -1,10 +1,10 @@
-import MainService from '../services/MainService';
+import GeneralController from './GeneralController';
 import TimelineModel from '../models/Timeline';
 
 // It use the same, so we will not write it again we use from logbook
 import { createMainPipeline } from '../pipeline/timeline.pipeline';
 
-const TimelineService = new MainService(TimelineModel, 'timeline');
+const TimelineService = new GeneralController(TimelineModel, 'timeline');
 
 export const onReadAll = async (req, res) => {
   try {

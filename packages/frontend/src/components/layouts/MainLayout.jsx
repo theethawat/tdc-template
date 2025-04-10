@@ -1,13 +1,12 @@
 /* This example requires Tailwind CSS v2.0+ */
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-import { Button, Breadcrumbs, Typography } from "@mui/joy";
+import { Breadcrumbs, Text, Button } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { NavHeader, Footer, Sidebar } from "../navbar";
-import menuList from "../../configs/menuList";
+import { NavHeader, Footer, Sidebar } from "../common/navbar";
+import menuList from "../../configs/general/menuList";
+import { IconChevronLeft } from "@tabler/icons-react";
 
 // eslint-disable-next-line max-len
 export default function MainLayout({
@@ -24,52 +23,51 @@ export default function MainLayout({
     <div>
       <div className='min-h-screen'>
         <NavHeader userData={me} currentPage={currentPage} />
-        <div className='flex flex-wrap'>
-          <div className='lg:w-1/6 hidden lg:block'>
-            <Sidebar menuList={menuList} />
+        <div className='flex flex-wrap max-w-full'>
+          <div className='lg:w-1/4 xl:w-1/5 hidden lg:block'>
+            <Sidebar menuList={menuList} userData={me} />
           </div>
           <div className='lg:w-3/4'>
-            <div className='w-full py-6 md:mx-12  container px-4 lg:px-8  '>
-              <div className='flex justify-between mt-20 w-full '>
+            <div className=' py-6 md:pl-8  px-4 lg:pl-8 lg:ml-8'>
+              <div className='flex justify-between  w-full '>
                 <div className='w-3/5 '>
-                  <Breadcrumbs aria-label='breadcrumbs' size='sm'>
-                    {hirachyList.map((item) => (
-                      <Link key={item} color='neutral' href='#basics'>
-                        {item}
-                      </Link>
-                    ))}
-                    <Typography>{title}</Typography>
-                  </Breadcrumbs>
-                  <h1 className='text-2xl  ml-2 font-display font-bold text-gray-900'>
+                  <div className='ml-2'>
+                    <Breadcrumbs aria-label='breadcrumbs' size='sm'>
+                      {hirachyList.map((item) => (
+                        <Link key={item} color='neutral' href='#basics'>
+                          {item}
+                        </Link>
+                      ))}
+                      <Text>{title}</Text>
+                    </Breadcrumbs>
+                  </div>
+                  <h1 className='text-3xl my-2 ml-2 font-display font-bold text-gray-900'>
                     {title}
                   </h1>
                 </div>
-                <div className='w-2/5 flex justify-end'>
+                <div className='w-2/5 flex justify-end items-end'>
                   {rightContainer}
                   {useBackButton && (
                     <div>
                       <Button
-                        color='neutral'
+                        color='gray'
                         onClick={() => {
                           navigate(-1);
                         }}
+                        leftSection={<IconChevronLeft size={18} />}
                       >
-                        <FontAwesomeIcon
-                          icon={faChevronLeft}
-                          className='mr-2'
-                        />
                         กลับ
                       </Button>
                     </div>
                   )}
                 </div>
               </div>
-              <div className='my-2 '>{children}</div>
+              <div className='mt-4'>{children}</div>
             </div>
           </div>
-        </div>
+        </div>{" "}
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

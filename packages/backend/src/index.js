@@ -27,7 +27,7 @@ app.use('/management/*', staticRoute);
 app.use(`/api/v${config.version}`, apiRoute);
 
 app.listen(config.port, () => {
-  console.log('Start TDC App');
+  console.log('Start App');
   console.log('Backend App Running at Port', config.port);
   console.log('-----------');
 });

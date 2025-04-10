@@ -5,7 +5,7 @@ import { Button } from "@mui/joy";
 import { useNavigate } from "react-router-dom";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavHeader, Footer } from "../navbar";
+import { NavHeader, Footer } from "../common/navbar";
 
 // eslint-disable-next-line max-len
 export default function NoSidebarLayout({
@@ -20,11 +20,10 @@ export default function NoSidebarLayout({
   const navigate = useNavigate();
   return (
     <div>
+      <NavHeader userData={me} currentPage={currentPage} />
       <div className='min-h-screen'>
-        <NavHeader userData={me} currentPage={currentPage} />
-
-        <div className='w-full py-6 md:mx-12  container px-4 lg:px-8  '>
-          <div className='flex justify-between mt-20 w-full '>
+        <div className='w-full py-6 md:mx-12  container px-4 lg:px-8'>
+          <div className='flex justify-between w-full '>
             <div className='w-3/5 '>
               <h1 className='text-2xl  ml-2 font-display font-bold text-gray-900'>
                 {title}

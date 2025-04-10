@@ -14,6 +14,7 @@ const UserSchema = new Schema({
     unique: true,
   },
   password: String,
+  tel: String,
   role: { type: String, default: 'USER' },
 });
 

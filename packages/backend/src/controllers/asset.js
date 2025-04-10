@@ -1,9 +1,9 @@
 import Mongoose from 'mongoose';
-import MainService from '../services/MainService';
+import GeneralController from './GeneralController';
 import AssetModel from '../models/Asset';
-import uploadService from '../services/uploadService';
+import uploadService from '../utils/uploadService';
 
-const AssetService = new MainService(AssetModel, 'asset');
+const AssetService = new GeneralController(AssetModel, 'asset');
 
 export const onReadAll = async (req, res) => {
   try {

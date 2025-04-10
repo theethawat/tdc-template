@@ -1,4 +1,4 @@
-import GeneralAction from "./GeneralAction";
+import GeneralAction from "../class/GeneralAction";
 import {
   USER_ALL,
   USER_CREATE,
@@ -15,6 +15,7 @@ const UserAction = new GeneralAction("user", "User", {
   createConst: USER_CREATE,
   updateConst: USER_EDIT,
   deleteConst: USER_DELETE,
+  loadingConst: "USER_LOADING",
 });
 
 export const getAllUser = (query) => UserAction.getAllData(query);

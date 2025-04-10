@@ -1,0 +1,103 @@
+{
+    // Place your mydev_logistic_v2 workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+    // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+    // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+    // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+    // Placeholders with the same ids are connected.
+    // Example:
+    // "Print to console": {
+    // 	"scope": "javascript,typescript",
+    // 	"prefix": "log",
+    // 	"body": [
+    // 		"console.log('$1');",
+    // 		"$2"
+    // 	],
+    // 	"description": "Log output to console"
+    // }
+  
+    "pipeline  push lookup ": {
+      "prefix": ["pipelookup", "plpl"],
+      "scope": "javascript,typescript",
+      "description": "Aggregate Pipeline push with lookup",
+      "body": [
+        "pipeline.push({",
+        "\\$lookup: {",
+        "from: '${1:element}',",
+        "localField: '${2:element}',",
+        "foreignField: '${3:element}',",
+        "as: '${1:element}',",
+        "},",
+        "});"
+      ]
+    },
+    "pipeline  push set": {
+      "prefix": ["pipeset", "plps"],
+      "scope": "javascript,typescript",
+      "description": "Aggregate Pipeline push with set",
+      "body": [
+        "pipeline.push({",
+        "\\$set: {",
+        "${1:element}: { ",
+        "\\$arrayElemAt : ['$${1:element}',0]",
+        "},",
+        "}});"
+      ]
+    },
+    "pipeline  push match": {
+      "prefix": ["pipematch", "plpm"],
+      "scope": "javascript,typescript",
+      "description": "Aggregate Pipeline push with match",
+      "body": [
+        "pipeline.push({",
+        "\\$match: {",
+        "${1:element}: ",
+        "${2:element}",
+        "}});"
+      ]
+    },
+    "pipeline  lookup ": {
+      "prefix": ["plookup", "pll"],
+      "scope": "javascript,typescript",
+      "description": "Aggregate Pipeline  lookup",
+      "body": [
+        "\\$lookup: {",
+        "from: '${1:element}',",
+        "localField: '${2:element}',",
+        "foreignField: '${3:element}',",
+        "as: '${1:element}',",
+        "}"
+      ]
+    },
+    "pipeline   set": {
+      "prefix": ["pset", "pls"],
+      "scope": "javascript,typescript",
+      "description": "Aggregate Pipeline  with set",
+      "body": [
+        "\\$set: {",
+        "${1:element}: { ",
+        "\\$arrayElemAt : ['$${1:element}',0]",
+        "}}"
+      ]
+    },
+    "debucing search function": {
+      "prefix": ["tefdb", "tef-db", "temdb"],
+      "description": "Debouncing Time for reducing power of server",
+      "scope": "javascript,typescript,jsx",
+      "body": [
+        " useEffect(() => {",
+        "   const delayDebounceFn = setTimeout(() => {",
+        "     setName(${1:searchTerm});",
+        "     setPage(1);",
+        "   }, 500);",
+        "   return () => clearTimeout(delayDebounceFn);",
+        " }, [${1:searchTerm}]);"
+      ]
+    },
+    "list index running": {
+      "prefix": ["temir", "tempir"],
+      "description": "Running List index in any table on any page",
+      "scope": "javascript,jsx",
+      "body": ["  (page - 1) * size + index + 1"]
+    },
+  }
