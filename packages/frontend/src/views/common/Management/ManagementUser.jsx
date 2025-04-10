@@ -13,6 +13,7 @@ import {
   IconSquarePlus,
 } from "@tabler/icons-react";
 import _ from "lodash";
+import { modals } from "@mantine/modals";
 
 export default function ManagementUser() {
   const dispatch = useDispatch();
@@ -32,6 +33,26 @@ export default function ManagementUser() {
 
     return () => {};
   }, [user]);
+
+  const handleDelete = (id) => {
+    modals.openConfirmModal({
+      title: "ยืนยันการลบ",
+      children: <div>คุณต้องการลบผู้ใช้งานนี้หรือไม่</div>,
+      labels: { confirm: "ยืนยัน", cancel: "ยกเลิก" },
+      onConfirm: () => {
+        dispatch(actions.deleteOneUser(id))
+          .then(() => {
+            dispatch(actions.getAllUser({ page, size }));
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      },
+      onCancel: () => {
+        console.log("Cancelled");
+      },
+    });
+  };
 
   return (
     <div>
@@ -66,12 +87,15 @@ export default function ManagementUser() {
                     <Table.Td>{each?.username}</Table.Td>
                     <Table.Td>
                       <div className='flex gap-2'>
-                        <Button
-                          variant='filled'
-                          leftSection={<IconFileDescription size={18} />}
-                        >
-                          รายละเอียด
-                        </Button>
+                        <Link to={`/management/user/detail/${each?._id}`}>
+                          <Button
+                            variant='filled'
+                            color='blue'
+                            leftSection={<IconFileDescription size={18} />}
+                          >
+                            รายละเอียด
+                          </Button>
+                        </Link>
                         <Link to={`/management/user/edit/${each?._id}`}>
                           <Button
                             variant='filled'
@@ -96,6 +120,7 @@ export default function ManagementUser() {
                           variant='filled'
                           color='red'
                           leftSection={<IconTrash size={18} />}
+                          onClick={() => handleDelete(each?._id)}
                         >
                           ลบ
                         </Button>

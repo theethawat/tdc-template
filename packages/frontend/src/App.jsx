@@ -28,6 +28,10 @@ function App() {
                 path='user/edit-password/:id'
                 element={<Management.EditPassword />}
               />
+              <Route
+                path='user/detail/:id'
+                element={<Management.DetailUser />}
+              />
               <Route path='*' element={<Utility.Error404 />} />
             </Route>
             <Route path='dashboard'>
