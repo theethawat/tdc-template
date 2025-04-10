@@ -19,13 +19,17 @@ function App() {
       <BrowserRouter>
         {window.localStorage.getItem("APP_TOKEN") ? (
           <Routes>
+            <Route path='login' element={<Auth.Login />} />
             <Route path='management'>
               <Route path='user' element={<Management.ManagementUser />} />
               <Route path='user/create' element={<Management.CreateUser />} />
               <Route path='user/edit/:id' element={<Management.EditUser />} />
+              <Route
+                path='user/edit-password/:id'
+                element={<Management.EditPassword />}
+              />
               <Route path='*' element={<Utility.Error404 />} />
             </Route>
-
             <Route path='dashboard'>
               <Route index element={<div>dashboard index</div>} />
             </Route>

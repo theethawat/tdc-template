@@ -81,13 +81,17 @@ export default function ManagementUser() {
                             แก้ไข
                           </Button>
                         </Link>
-                        <Button
-                          variant='filled'
-                          color='black'
-                          leftSection={<IconKey size={18} />}
+                        <Link
+                          to={`/management/user/edit-password/${each?._id}`}
                         >
-                          แก้รหัสผ่าน
-                        </Button>
+                          <Button
+                            variant='filled'
+                            color='black'
+                            leftSection={<IconKey size={18} />}
+                          >
+                            แก้รหัสผ่าน
+                          </Button>
+                        </Link>
                         <Button
                           variant='filled'
                           color='red'

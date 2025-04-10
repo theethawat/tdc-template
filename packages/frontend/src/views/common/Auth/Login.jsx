@@ -1,5 +1,7 @@
 import { useForm, Controller } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import {
   Anchor,
   Button,
@@ -19,6 +21,22 @@ export default function Login() {
   const { control, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const notify = useNotify();
+  const me = useSelector((state) => state.me);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(actions.meGet());
+
+    return () => {};
+  }, []);
+
+  // Navigate to dashboard if user is already logged in
+  useEffect(() => {
+    if (me?.username) {
+      navigate("/");
+    }
+    return () => {};
+  }, [me]);
 
   const handleLogin = (data) => {
     dispatch(actions.meLogin(data))

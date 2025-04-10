@@ -3,7 +3,7 @@ import express from 'express';
 
 import passport from '../configs/passport';
 import authMiddleWare from '../middleware/auth';
-import userController from '../controllers/user';
+import userController from '../controllers/user.controller';
 
 const router = express.Router();
 

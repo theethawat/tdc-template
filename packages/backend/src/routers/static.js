@@ -5,10 +5,7 @@ const app = express.Router();
 const staticPath = express.static(path.join(__dirname, '../www'));
 
 app.use('/', staticPath);
-app.use('/shopping-list', staticPath);
-app.use('/shopping-list/*', staticPath);
-app.use('/product/', staticPath);
-app.use('/product/*', staticPath);
+
 app.use('/management', staticPath);
 app.use('/management/*', staticPath);
 
