@@ -10,3 +10,10 @@ export const USER_EDIT = "USER_EDIT";
 export const USER_ERROR = "USER_ERROR";
 export const USER_DELETE = "USER_DELETE";
 export const USER_LOADING = "USER_LOADING";
+
+/** Script Add New Const */
+
+/** ห้ามลบคอมเมนต์ตรงคำว่า Script Add New Const นะเป็น Script ที่วางเอาไว้ ให้มันอยู่ล่างสุดเสมอ
+ * Do not remove the comment line below, it is a script that always put it at the bottom of the file
+ * It will be used to add new const to the file automatically.
+ */
