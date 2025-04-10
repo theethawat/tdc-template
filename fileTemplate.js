@@ -27,14 +27,27 @@ const createControllerFile = (modelName) => {
     path.join(__dirname, "template", "controller.template.js"),
     "utf8"
   );
+  const pipelineTempalte = fs.readFileSync(
+    path.join(__dirname, "template", "pipeline.template.js"),
+    "utf8"
+  );
   const template = Handlebars.compile(controllerTemplate);
-  const result = template({ modelName: modelFileName });
+  const result = template({
+    modelName: modelFileName,
+    controllerName: controllerFileName,
+  });
   const modelFilePath = path.join(
     __dirname,
     "packages/backend/src/controllers",
     `${controllerFileName}.controller.js`
   );
+  const pipelineFilePath = path.join(
+    __dirname,
+    "packages/backend/src/pipeline",
+    `${controllerFileName}.pipeline.js`
+  );
   fs.writeFileSync(modelFilePath, result, "utf8");
+  fs.writeFileSync(pipelineFilePath, pipelineTempalte, "utf8");
 };
 
 const createRouterFile = (modelName) => {
@@ -57,6 +70,24 @@ const createRouterFile = (modelName) => {
     `${controllerFileName}.routes.js`
   );
   fs.writeFileSync(modelFilePath, result, "utf8");
+
+  // Append to api.js
+  const apiFilePath = path.join(
+    __dirname,
+    "packages/backend/src/routers",
+    "api.js"
+  );
+  const apiFilePathContent = fs.readFileSync(apiFilePath, "utf8");
+  const newImportLine = `import ${controllerFileName}Router from './${controllerFileName}.routes';\n`;
+  const newUseLine = `router.use('/${controllerFileName}', ${controllerFileName}Router);\n`;
+  const newApiFileContent = apiFilePathContent
+    .replace(
+      "/** Place For Import */",
+      `${newImportLine}/** Place For Import */`
+    )
+    .replace("/** Place For Use */", `${newUseLine}/** Place For Use */`);
+
+  fs.writeFileSync(apiFilePath, newApiFileContent, "utf8");
 };
 
 process.on("exit", (code) => {

@@ -1,32 +1,13 @@
 import hash from 'object-hash';
 import GeneralController from '../class/GeneralController';
-import UserModel from '../models/User';
-import middleware from '../middleware/auth';
-import config from '../configs/app';
+import DepartmentModel from '../models/Department';
 import {
-  createLookupPipeline,
-  createMainPipeline,
-} from '../pipeline/user.pipeline';
+    createLookupPipeline,
+    createMainPipeline,
+  } from '../pipeline/department.pipeline';
 
-const MainController = new GeneralController(UserModel, 'user');
+const MainController = new GeneralController(DepartmentModel );
 
-const passwordHash = (password) =>
-  hash.sha1({
-    secret: config.secret,
-    password,
-  });
-
-export const getUserAfterLogin = async (data) => {
-  try {
-    const payload = {
-      ...data,
-      authToken: middleware.generateToken({ username: data?.username }),
-    };
-    return payload;
-  } catch (error) {
-    throw Error('LOGIN_FAIL Logging in Fail cannot find user');
-  }
-};
 
 export const onReadAll = async (req, res) => {
   try {
@@ -71,13 +52,6 @@ export const onCreateOne = async (req, res) => {
 
 export const onEditOne = async (req, res) => {
   try {
-    const payload = req.body;
-
-    // Hash Password Not store directly
-    if (req?.body?.password) {
-      payload.password = passwordHash(req.body.password);
-    }
-
     await MainController.updateOne(req.params.id, req.body);
 
     res.status(200).send({ message: 'Successfully Update' });
@@ -95,21 +69,10 @@ export const onDeleteOne = async (req, res) => {
   }
 };
 
-export const onLogin = async (req, res) => {
-  try {
-    console.log('On Login');
-    const result = await getUserAfterLogin(req.user);
-    res.status(200).send(result);
-  } catch (error) {
-    res.status(403).send({ error });
-  }
-};
-
 export default {
   onReadAll,
   onReadOne,
   onCreateOne,
   onEditOne,
   onDeleteOne,
-  onLogin,
 };

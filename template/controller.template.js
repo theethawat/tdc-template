@@ -1,16 +1,18 @@
 import hash from 'object-hash';
 import GeneralController from '../class/GeneralController';
 import {{modelName}}Model from '../models/{{modelName}}';
-import middleware from '../middleware/auth';
-import config from '../configs/app';
+import {
+    createLookupPipeline,
+    createMainPipeline,
+  } from '../pipeline/{{controllerName}}.pipeline';
 
 const MainController = new GeneralController({{modelName}}Model );
 
 
 export const onReadAll = async (req, res) => {
   try {
-    const pipeline = [];
-    const lookupPipeline = [];
+    const pipeline = createMainPipeline(req);
+    const lookupPipeline = createLookupPipeline(req);
     const result = await MainController.aggregation({
       page: req?.query?.page,
       size: req?.query?.size,
@@ -25,8 +27,8 @@ export const onReadAll = async (req, res) => {
 
 export const onReadOne = async (req, res) => {
   try {
-    const pipeline = [];
-    const lookupPipeline = [];
+    const pipeline = createMainPipeline(req);
+    const lookupPipeline = createLookupPipeline(req);
     const result = await MainController.getOneAggregate({
       id: req.params.id,
       pipeline,
