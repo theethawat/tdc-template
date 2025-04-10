@@ -21,20 +21,22 @@ const UserForm = ({
           />
         </Input.Wrapper>
       </div>{" "}
-      <div className='w-full my-1 px-1'>
-        <Input.Wrapper
-          label='Username'
-          description='ชื่อที่จะใช้สำหรับ Login ควรจะเป็นภาษาอังกฤษ ตัวพิมพ์เล็ก'
-          required
-        >
-          <Controller
-            control={control}
-            name='username'
-            defaultValue={defaultValue?.username}
-            render={({ field }) => <Input placeholder='somchai' {...field} />}
-          />
-        </Input.Wrapper>
-      </div>
+      {showPasswordInput && (
+        <div className='w-full my-1 px-1'>
+          <Input.Wrapper
+            label='Username'
+            description='ชื่อที่จะใช้สำหรับ Login ควรจะเป็นภาษาอังกฤษ ตัวพิมพ์เล็ก'
+            required
+          >
+            <Controller
+              control={control}
+              name='username'
+              defaultValue={defaultValue?.username}
+              render={({ field }) => <Input placeholder='somchai' {...field} />}
+            />
+          </Input.Wrapper>
+        </div>
+      )}
       {showPasswordInput && (
         <div className='w-full lg:w-1/2 my-1 px-1'>
           <Input.Wrapper

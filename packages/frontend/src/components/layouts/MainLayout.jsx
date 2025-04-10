@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-import { Breadcrumbs, Text, Button } from "@mantine/core";
+import { Breadcrumbs, Text, Button, Skeleton } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { NavHeader, Footer, Sidebar } from "../common/navbar";
@@ -15,6 +15,7 @@ export default function MainLayout({
   rightContainer,
   useBackButton,
   hirachyList = ["หน้าหลัก"],
+  isReady = true,
   children,
 }) {
   const me = useSelector((state) => state.me);
@@ -62,7 +63,15 @@ export default function MainLayout({
                   )}
                 </div>
               </div>
-              <div className='mt-4'>{children}</div>
+              {!isReady ? (
+                <div>
+                  <Skeleton height={8} mt={6} radius='xl' />
+                  <Skeleton height={8} mt={6} radius='xl' />
+                  <Skeleton height={8} mt={6} radius='xl' />
+                </div>
+              ) : (
+                <div className='mt-4'>{children}</div>
+              )}
             </div>
           </div>
         </div>{" "}

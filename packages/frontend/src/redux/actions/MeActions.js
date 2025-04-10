@@ -36,6 +36,10 @@ export const meLogin =
 export const meGet = () => async (dispatch) => {
   try {
     const user = window.localStorage.getItem("APP_USER");
+    if (!user) {
+      dispatch({ type: ME_ERROR, payload: { error: "Get UserData Error" } });
+      return;
+    }
     const { data, status } = await api.get(
       `${import.meta.env.VITE_API_URL}/user/${user}`
     );

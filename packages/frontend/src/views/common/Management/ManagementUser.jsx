@@ -72,13 +72,15 @@ export default function ManagementUser() {
                         >
                           รายละเอียด
                         </Button>
-                        <Button
-                          variant='filled'
-                          color='yellow'
-                          leftSection={<IconEdit size={18} />}
-                        >
-                          แก้ไข
-                        </Button>
+                        <Link to={`/management/user/edit/${each?._id}`}>
+                          <Button
+                            variant='filled'
+                            color='yellow'
+                            leftSection={<IconEdit size={18} />}
+                          >
+                            แก้ไข
+                          </Button>
+                        </Link>
                         <Button
                           variant='filled'
                           color='black'
