@@ -9,7 +9,7 @@ const router = express.Router();
 
 console.log('In User Router');
 
-router.get('/', userController.onReadAll);
+router.get('/', authMiddleWare.verifyRequest, userController.onReadAll);
 router.get('/:id', userController.onReadOne);
 router.post('/register', userController.onCreateOne);
 router.post('/', userController.onCreateOne);
