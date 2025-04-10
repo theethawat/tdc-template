@@ -1,8 +1,16 @@
-import GeneralController from './GeneralController';
+import hash from 'object-hash';
+import GeneralController from '../class/GeneralController';
 import UserModel from '../models/User';
 import middleware from '../middleware/auth';
+import config from '../configs/app';
 
-const UserFromMainService = new GeneralController(UserModel, 'user');
+const MainController = new GeneralController(UserModel, 'user');
+
+const passwordHash = (password) =>
+  hash.sha1({
+    secret: config.secret,
+    password,
+  });
 
 export const getUserAfterLogin = async (data) => {
   try {
@@ -20,7 +28,7 @@ export const onReadAll = async (req, res) => {
   try {
     const pipeline = [];
     const lookupPipeline = [];
-    const result = await UserFromMainService.aggregation({
+    const result = await MainController.aggregation({
       page: req?.query?.page,
       size: req?.query?.size,
       pipeline,
@@ -36,7 +44,7 @@ export const onReadOne = async (req, res) => {
   try {
     const pipeline = [];
     const lookupPipeline = [];
-    const result = await UserFromMainService.getOneAggregate({
+    const result = await MainController.getOneAggregate({
       id: req.params.id,
       pipeline,
       lookupPipeline,
@@ -49,7 +57,7 @@ export const onReadOne = async (req, res) => {
 
 export const onCreateOne = async (req, res) => {
   try {
-    const result = await UserFromMainService.createOne(req.body);
+    const result = await MainController.createOne(req.body);
     res.status(201).send(result);
   } catch (error) {
     console.error('error', error);
@@ -59,7 +67,15 @@ export const onCreateOne = async (req, res) => {
 
 export const onEditOne = async (req, res) => {
   try {
-    await UserFromMainService.updateOne(req.params.id, req.body);
+    const payload = req.body;
+
+    // Hash Password Not store directly
+    if (req?.body?.password) {
+      payload.password = passwordHash(req.body.password);
+    }
+
+    await MainController.updateOne(req.params.id, req.body);
+
     res.status(200).send({ message: 'Successfully Update' });
   } catch (error) {
     res.status(400).send({ error });
@@ -68,7 +84,7 @@ export const onEditOne = async (req, res) => {
 
 export const onDeleteOne = async (req, res) => {
   try {
-    await UserFromMainService.deleteOne(req.params.id);
+    await MainController.deleteOne(req.params.id);
     res.status(204).send({ message: 'Delete Success' });
   } catch (error) {
     res.status(400).send({ error });

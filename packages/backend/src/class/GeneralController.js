@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import config from '../configs/app';
 import mongoose from 'mongoose';
+import config from '../configs/app';
 
-class MainService {
+class GeneralController {
   constructor(selectedModel, name) {
     this.selectedModel = selectedModel;
     this.name = name;
@@ -156,4 +156,4 @@ class MainService {
   }
 }
 
-export default MainService;
+export default GeneralController;
