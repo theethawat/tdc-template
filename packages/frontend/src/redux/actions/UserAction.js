@@ -6,6 +6,7 @@ import {
   USER_EDIT,
   USER_ERROR,
   USER_GET,
+  USER_LOADING,
 } from "../type";
 
 const UserAction = new GeneralAction("user", "User", {
@@ -15,7 +16,7 @@ const UserAction = new GeneralAction("user", "User", {
   createConst: USER_CREATE,
   updateConst: USER_EDIT,
   deleteConst: USER_DELETE,
-  loadingConst: "USER_LOADING",
+  loadingConst: USER_LOADING,
 });
 
 export const getAllUser = (query) => UserAction.getAllData(query);

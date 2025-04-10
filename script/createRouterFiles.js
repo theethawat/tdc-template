@@ -6,6 +6,7 @@ const changecase = require("change-case");
 const createRouterFile = (modelName) => {
   const controllerFileName = changecase.camelCase(modelName);
   const modelFileName = changecase.pascalCase(modelName);
+  const apiRouterName = changecase.kebabCase(modelName);
 
   const routerTemplate = fs.readFileSync(
     path.join(__dirname, "../template", "routes.template.js"),
@@ -32,7 +33,7 @@ const createRouterFile = (modelName) => {
   );
   const apiFilePathContent = fs.readFileSync(apiFilePath, "utf8");
   const newImportLine = `import ${controllerFileName}Router from './${controllerFileName}.routes';\n`;
-  const newUseLine = `router.use('/${controllerFileName}', ${controllerFileName}Router);\n`;
+  const newUseLine = `router.use('/${apiRouterName}', ${controllerFileName}Router);\n`;
   const newApiFileContent = apiFilePathContent
     .replace(
       "/** Place For Import */",
@@ -41,6 +42,12 @@ const createRouterFile = (modelName) => {
     .replace("/** Place For Use */", `${newUseLine}/** Place For Use */`);
 
   fs.writeFileSync(apiFilePath, newApiFileContent, "utf8");
+  console.log(
+    ` Created Route ${controllerFileName}.routes.js and updated api.js`
+  );
+  console.log(
+    `✈️🌍 API of ${modelName} is located at path /api/v1/${apiRouterName}`
+  );
 };
 
 module.exports = createRouterFile;
