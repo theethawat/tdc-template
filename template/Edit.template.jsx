@@ -47,7 +47,7 @@ export default function Edit{{modelName}}() {
       <MainLayout
         title='แก้ไข{{thaiName}}'
         useBackButton
-        isReady={{{modelCamelCase}}.isReady}
+        isReady={ {{modelCamelCase}}.isReady }
       >
         <form onSubmit={handleSubmit(handleSubmitData)}>
           <{{modelName}}Form control={control} watch={watch} defaultValue={{{modelCamelCase}}} />

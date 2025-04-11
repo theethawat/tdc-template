@@ -29,7 +29,7 @@ export default function Detail{{modelName}}() {
       <MainLayout
         title='รายละเอียด{{modelThaiName}}'
         useBackButton
-        isReady={{{modelCamelCase}}.isReady}
+        isReady={ {{modelCamelCase}}.isReady }
       >
         <Paper shadow='sm' p='xl'>
           <div className='flex flex-wrap'>
