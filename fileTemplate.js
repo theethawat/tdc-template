@@ -7,6 +7,7 @@ const createActionFile = require("./script/createActionFile.js");
 const createReducerFile = require("./script/createReducerFile.js");
 const createViewFiles = require("./script/createViewFiles.js");
 const createFormFile = require("./script/createFormFile.js");
+const updateMenuList = require("./script/updateMenuList.js");
 
 process.on("exit", (code) => {
   console.log(`About to exit with code: ${code}`);
@@ -34,6 +35,8 @@ const main = () => {
     !process.argv.includes("-nv") && !process.argv.includes("--no-view");
   const createFrom =
     !process.argv.includes("-nf") && !process.argv.includes("--no-form");
+  const updateMenu =
+    !process.argv.includes("-nu") && !process.argv.includes("--no-update-menu");
   if (!modelName) {
     console.error("Please provide a model name.");
     process.exit(1);
@@ -87,6 +90,14 @@ const main = () => {
       modelName,
       isCommon:
         !process.argv.includes("-s") && !process.argv.includes("--specific"),
+    });
+  }
+
+  if (updateMenu) {
+    updateMenuList({
+      modelName,
+      moduleName: process.argv[moduleNameIndex],
+      thaiName: process.argv[thaiNameIndex] || changecase.pascalCase(modelName),
     });
   }
 

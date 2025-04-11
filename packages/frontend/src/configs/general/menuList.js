@@ -1,28 +1,18 @@
-import {
-  IconAdjustments,
-  IconCalendarStats,
-  IconFileAnalytics,
-  IconGauge,
-  IconLock,
-  IconNotes,
-  IconPresentationAnalytics,
-} from "@tabler/icons-react";
+import { IconAdjustments, IconChevronRight } from "@tabler/icons-react";
 
 const menuList = [
-  { label: "Dashboard", icon: IconGauge },
-
   {
     label: "Management",
     icon: IconAdjustments,
-    initiallyOpened: true,
+    initiallyOpened: false,
     links: [
       {
         label: "จัดการผู้เข้าใช้งาน User Account",
         link: "/management/user",
       },
-      { label: "Outlook", link: "/" },
-      { label: "Real time", link: "/" },
+      /** Script Add Link Management */
     ],
   },
+  /** Script Add Module Link */
 ];
 export default menuList;
