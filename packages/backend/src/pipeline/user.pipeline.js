@@ -4,7 +4,7 @@ export const createMainPipeline = (req) => {
   if (req?.query?.name) {
     pipeline.push({
       $match: {
-        title: {
+        name: {
           $regex: req?.query?.name,
           $options: 'i',
         },

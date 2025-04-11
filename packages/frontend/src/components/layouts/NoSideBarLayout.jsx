@@ -20,7 +20,7 @@ export default function NoSidebarLayout({
   const navigate = useNavigate();
   return (
     <div>
-      <NavHeader userData={me} currentPage={currentPage} />
+      <NavHeader userData={me} currentPage={currentPage} forceDisplay={true} />
       <div className='min-h-screen'>
         <div className='w-full py-6 md:mx-12  container px-4 lg:px-8'>
           <div className='flex justify-between w-full '>

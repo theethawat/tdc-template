@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { MainLayout } from "../../../components/layouts";
 import { Pagination,useNotify } from "../../../components";
 import * as actions from "../../../redux/actions";
-import { Table, Button, Skeleton } from "@mantine/core";
+import { Table, Button, Skeleton ,TextInput} from "@mantine/core";
 import {
   IconEdit,
   IconFileDescription,
   IconTrash,
-  IconSquarePlus,
+  IconSquarePlus,IconSearch
 } from "@tabler/icons-react";
 import _ from "lodash";
 import { modals } from "@mantine/modals";
@@ -86,6 +86,15 @@ export default function Management{{modelName}}() {
           </Link>
         }
       >
+         <div className='my-6'>
+          <TextInput
+            mt='md'
+            rightSectionPointerEvents='none'
+            rightSection={<IconSearch size={16} />}
+            placeholder='ค้นหา'
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
         <Table.ScrollContainer minWidth={800}>
           <Table>
             <Table.Thead>

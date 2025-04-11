@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { MainLayout } from "../../../components/layouts";
 import { Pagination } from "../../../components";
 import * as actions from "../../../redux/actions";
-import { Table, Button, Skeleton } from "@mantine/core";
+import { Table, Button, Skeleton, TextInput } from "@mantine/core";
 import {
   IconEdit,
   IconFileDescription,
   IconTrash,
   IconKey,
   IconSquarePlus,
+  IconSearch,
 } from "@tabler/icons-react";
 import _ from "lodash";
 import { modals } from "@mantine/modals";
@@ -21,18 +22,28 @@ export default function ManagementUser() {
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(10);
   const [total, setTotal] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
-    dispatch(actions.getAllUser({ page, size }));
+    dispatch(actions.getAllUser({ page, size, name }));
 
     return () => {};
-  }, [page, size]);
+  }, [page, size, name]);
 
   useEffect(() => {
     setTotal(user?.total);
 
     return () => {};
   }, [user]);
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      setName(searchTerm);
+      setPage(1);
+    }, 500);
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm]);
 
   const handleDelete = (id) => {
     modals.openConfirmModal({
@@ -67,6 +78,15 @@ export default function ManagementUser() {
           </Link>
         }
       >
+        <div className='my-6'>
+          <TextInput
+            mt='md'
+            rightSectionPointerEvents='none'
+            rightSection={<IconSearch size={16} />}
+            placeholder='ค้นหา'
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
         <Table.ScrollContainer minWidth={800}>
           <Table>
             <Table.Thead>

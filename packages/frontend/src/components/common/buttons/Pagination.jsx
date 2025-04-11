@@ -2,7 +2,7 @@ import { Pagination as MantinePagination, Select } from "@mantine/core";
 
 export default function Pagination({ total, page, size, setPage, setSize }) {
   return (
-    <div className='flex justify-end my-2 gap-2'>
+    <div className='flex justify-end my-2 gap-2 w-full overflow-x-auto'>
       <MantinePagination
         total={total / size + 1}
         withEdges

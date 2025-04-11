@@ -1,43 +1,56 @@
 /* This example requires Tailwind CSS v2.0+ */
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-import { Breadcrumbs, Text, Button, Skeleton } from "@mantine/core";
+import { Breadcrumbs, Text, Button, Skeleton, Drawer } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { NavHeader, Footer, Sidebar } from "../common/navbar";
 import menuList from "../../configs/general/menuList";
 import { IconChevronLeft } from "@tabler/icons-react";
+import _ from "lodash";
 
 // eslint-disable-next-line max-len
 export default function MainLayout({
   title,
   rightContainer,
   useBackButton,
-  hirachyList = ["หน้าหลัก"],
+  hirachyList = [{ label: "หน้าหลัก", link: "/" }],
   isReady = true,
   children,
 }) {
   const me = useSelector((state) => state.me);
   const navigate = useNavigate();
+  const [opened, { open, close }] = useDisclosure(false);
   return (
     <div>
       <div className='min-h-screen'>
-        <NavHeader userData={me} />
+        <Drawer opened={opened} onClose={close} size='sm'>
+          <Sidebar menuList={menuList} userData={me} />
+        </Drawer>
         <div className='flex flex-wrap max-w-full'>
-          <div className='lg:w-1/4 xl:w-1/5 hidden lg:block'>
+          <div className='lg:w-1/4 xl:w-1/6 hidden lg:block'>
             <Sidebar menuList={menuList} userData={me} />
           </div>
-          <div className='lg:w-3/4'>
+          <div className='lg:w-3/4 xl:w-5/6 w-full'>
+            <NavHeader userData={me} handleOpenDrawer={open} />
             <div className=' py-6 md:pl-8  px-4 lg:pl-8 lg:ml-8'>
-              <div className='flex justify-between  w-full '>
+              <div className='flex justify-between items-center w-full '>
                 <div className='w-3/5 '>
                   <div className='ml-2'>
                     <Breadcrumbs aria-label='breadcrumbs' size='sm'>
-                      {hirachyList.map((item) => (
-                        <Link key={item} color='neutral' href='#basics'>
-                          {item}
-                        </Link>
-                      ))}
+                      {_.map(hirachyList, (item) => {
+                        return (
+                          <Link
+                            key={item?.link}
+                            to={item?.link}
+                            color='neutral'
+                          >
+                            {item?.label}
+                          </Link>
+                        );
+                      })}
                       <Text>{title}</Text>
                     </Breadcrumbs>
                   </div>
@@ -69,7 +82,7 @@ export default function MainLayout({
                   <Skeleton height={8} mt={6} radius='xl' />
                 </div>
               ) : (
-                <div className='mt-4'>{children}</div>
+                <div className='mt-6 md:mt-4 px-2'>{children}</div>
               )}
             </div>
           </div>
@@ -100,5 +113,5 @@ MainLayout.defaultProps = {
   currentPage: "",
   rightContainer: <div />,
   useBackButton: false,
-  hirachyList: ["หน้าหลัก"],
+  hirachyList: [{ label: "หน้าหลัก", link: "/" }],
 };

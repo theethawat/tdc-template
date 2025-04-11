@@ -11,6 +11,7 @@ import {
   IconSettings,
   IconStar,
   IconSwitchHorizontal,
+  IconMenu2,
 } from "@tabler/icons-react";
 import classes from "../../../assets/css/HeaderTab.module.css";
 import {
@@ -20,12 +21,17 @@ import {
   Text,
   UnstyledButton,
   useMantineTheme,
+  Button,
 } from "@mantine/core";
 import { information } from "@iarc-programing/tp2025-constants";
 import Avvvatars from "avvvatars-react";
 import * as actions from "../../../redux/actions";
 import { useNavigate } from "react-router-dom";
-export default function NavHeader({ userData }) {
+export default function NavHeader({
+  userData,
+  handleOpenDrawer,
+  forceDisplay,
+}) {
   const dispatch = useDispatch();
   const theme = useMantineTheme();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
@@ -35,10 +41,23 @@ export default function NavHeader({ userData }) {
     <div className={classes.header}>
       <Container className={classes.mainSection} size='md'>
         <Group justify='space-between'>
-          <Link to='/'>
-            <div className='text-lg font-semibold'>{information.title}</div>
-          </Link>
-
+          <div
+            className={`flex gap-2 items-center ${
+              forceDisplay ? "" : "lg:hidden"
+            }`}
+          >
+            <Link to='/'>
+              <div className='text-lg font-semibold ml-6'>
+                {information.title}
+              </div>
+            </Link>
+            <div className='lg:hidden'>
+              <Button variant='default' size='sm' onClick={handleOpenDrawer}>
+                <IconMenu2 size={16} />
+              </Button>
+            </div>
+          </div>
+          <div className='hidden lg:block'></div>
           <Menu
             width={260}
             position='bottom-end'
@@ -51,9 +70,11 @@ export default function NavHeader({ userData }) {
               <UnstyledButton>
                 <Group gap={7}>
                   <Avvvatars value={userData.name} style='shape' />
-                  <Text fw={500} size='sm' lh={1} mr={3}>
-                    {userData.name}
-                  </Text>
+                  <div className='hidden lg:block'>
+                    <Text fw={500} size='sm' lh={1} mr={3}>
+                      {userData.name}
+                    </Text>
+                  </div>
                   <IconChevronDown size={12} stroke={1.5} />
                 </Group>
               </UnstyledButton>
