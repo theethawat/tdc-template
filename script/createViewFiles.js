@@ -9,7 +9,7 @@ const createViewFile = ({
   moduleName: inputModuleName,
   isCommon = true,
 }) => {
-  const modelCamelCase = changecase.camelCase(modelName);
+  const modelCamelCase = changecase.camelCase(inputModelName);
   const modelName = changecase.pascalCase(inputModelName);
   const modelAPIName = changecase.kebabCase(inputModelName);
   const moduleAPIName = changecase.kebabCase(inputModuleName);
