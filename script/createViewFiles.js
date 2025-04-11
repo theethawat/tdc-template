@@ -29,7 +29,7 @@ const createViewFile = ({
     "utf8"
   );
   const editTemplateFile = fs.readFileSync(
-    path.join(__dirname, "../template", "Edot.template.jsx"),
+    path.join(__dirname, "../template", "Edit.template.jsx"),
     "utf8"
   );
 
