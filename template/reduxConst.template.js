@@ -1,3 +1,4 @@
+export const {{modelCapital}}_GET = "{{modelCapital}}_GET";
 export const {{modelCapital}}_ALL = "{{modelCapital}}_ALL";
 export const {{modelCapital}}_CREATE = "{{modelCapital}}_CREATE";
 export const {{modelCapital}}_EDIT = "{{modelCapital}}_EDIT";

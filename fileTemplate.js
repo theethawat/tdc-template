@@ -83,6 +83,14 @@ const main = () => {
       thaiName: thaiNameValue,
       isCommon,
     });
+
+    if (updateMenu) {
+      updateMenuList({
+        modelName,
+        moduleName,
+        thaiName: thaiNameValue,
+      });
+    }
   }
 
   if (createFrom) {
@@ -90,14 +98,6 @@ const main = () => {
       modelName,
       isCommon:
         !process.argv.includes("-s") && !process.argv.includes("--specific"),
-    });
-  }
-
-  if (updateMenu) {
-    updateMenuList({
-      modelName,
-      moduleName: process.argv[moduleNameIndex],
-      thaiName: process.argv[thaiNameIndex] || changecase.pascalCase(modelName),
     });
   }
 

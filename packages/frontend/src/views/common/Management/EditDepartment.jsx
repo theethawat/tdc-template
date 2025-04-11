@@ -1,22 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { MainLayout, {{modelName}}Form, useNotify } from "../../../components";
+import { MainLayout, DepartmentForm, useNotify } from "../../../components";
 import * as actions from "../../../redux/actions";
 import { useForm } from "react-hook-form";
 import { Button } from "@mantine/core";
 import { useNavigate, useParams } from "react-router";
 
-export default function Edit{{modelName}}() {
+export default function EditDepartment() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {{modelCamelCase}} = useSelector((state) => state.{{modelCamelCase}});
+  const department = useSelector((state) => state.department);
   const { control, handleSubmit, watch } = useForm();
   const notify = useNotify();
   const params = useParams();
 
   const handleSubmitData = async (data) => {
     console.log("Data", data);
-    dispatch(actions.updateOne{{modelName}}(params.id, data))
+    dispatch(actions.updateOneDepartment(params.id, data))
       .then(() => {
         notify.success({
           title: "แก้ไขสำเร็จ",
@@ -30,7 +30,7 @@ export default function Edit{{modelName}}() {
   };
 
   useEffect(() => {
-    dispatch(actions.getOne{{modelName}}(params.id))
+    dispatch(actions.getOneDepartment(params.id))
       .then(() => {})
       .catch((err) => {
         notify.error({
@@ -44,13 +44,13 @@ export default function Edit{{modelName}}() {
 
   return (
     <div>
-      <MainLayout
-        title='แก้ไข{{thaiName}}'
-        useBackButton
-        isReady={ {{modelCamelCase}}.isReady }
-      >
+      <MainLayout title='แก้ไขแผนก' useBackButton isReady={department.isReady}>
         <form onSubmit={handleSubmit(handleSubmitData)}>
-          <{{modelName}}Form control={control} watch={watch} defaultValue={ {{modelCamelCase}} } />
+          <DepartmentForm
+            control={control}
+            watch={watch}
+            defaultValue={department}
+          />
 
           <div className='flex justify-end'>
             <Button type='submit'>บันทึก</Button>

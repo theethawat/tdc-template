@@ -1,14 +1,19 @@
 import { IconAdjustments, IconChevronRight } from "@tabler/icons-react";
 
+const location = window.location;
 const menuList = [
   {
     label: "Management",
     icon: IconAdjustments,
-    initiallyOpened: false,
+    initiallyOpened: location.pathname.includes("/management"),
     links: [
       {
         label: "จัดการผู้เข้าใช้งาน User Account",
         link: "/management/user",
+      },
+      {
+        label: "จัดการแผนก",
+        link: "/management/department",
       },
       /** Script Add Link Management */
     ],

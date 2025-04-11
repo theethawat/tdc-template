@@ -166,7 +166,7 @@ const createViewFile = ({
     <Route path='create' element={<${moduleName}.Create${modelName} />} />
     <Route path='edit/:id' element={<${moduleName}.Edit${modelName} />} />
     <Route path='detail/:id' element={<${moduleName}.Detail${modelName} />} />
-    <Route path='*' element={<${moduleName}.Management${modelName} />} />
+    <Route index element={<${moduleName}.Management${modelName} />} />
     </Route>
      {/** Script Place For New Route ${moduleName} */}`;
 

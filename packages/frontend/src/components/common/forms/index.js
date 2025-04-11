@@ -1,16 +1,18 @@
 import UserForm from "./UserForm";
 import PasswordForm from "./PasswordForm";
-/** Script Import New Form */
+import DepartmentForm from "./DepartmentForm";/** Script Import New Form */
 
 export {
   UserForm,
   PasswordForm,
-  /** Script Export New Form */
+ DepartmentForm,
+ /** Script Export New Form */
 };
 export default {
   UserForm,
   PasswordForm,
-  /** Script Export Default New Form */
+  DepartmentForm,
+/** Script Export Default New Form */
 };
 
 /**
