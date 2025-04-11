@@ -168,9 +168,10 @@ const createViewFile = ({
     <Route path='detail/:id' element={<${moduleName}.Detail${modelName} />} />
     <Route path='*' element={<${moduleName}.Management${modelName} />} />
     </Route>
-    {/** Script Place For New Route ${moduleName} */}`;
+     {/** Script Place For New Route ${moduleName} */}`;
+
   const newAppFileContent = appFileContent.replace(
-    `{/** Script Place For New Route ${modelName} */}`,
+    `{/** Script Place For New Route ${moduleName} */}`,
     newRouteLine
   );
   fs.writeFileSync(appFilePath, newAppFileContent, "utf8");
