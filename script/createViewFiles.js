@@ -170,7 +170,8 @@ const createViewFile = ({
     </Route>
     {/** Script Place For New Route ${moduleName} */}`;
   const newAppFileContent = appFileContent.replace(
-    `{/** Script Place For New Route ${modelName} */}`
+    `{/** Script Place For New Route ${modelName} */}`,
+    newRouteLine
   );
   fs.writeFileSync(appFilePath, newAppFileContent, "utf8");
   console.log(
