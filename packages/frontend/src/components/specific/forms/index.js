@@ -1,15 +1,13 @@
-import UserForm from "./UserForm";
-import PasswordForm from "./PasswordForm";
+import ExampleSpecificForm from "./ExampleSpecificForm";
 /** Script Import New Form */
 
 export {
-  UserForm,
-  PasswordForm,
+  ExampleSpecificForm,
   /** Script Export New Form */
 };
+
 export default {
-  UserForm,
-  PasswordForm,
+  ExampleSpecificForm,
   /** Script Export Default New Form */
 };
 

@@ -5,5 +5,6 @@ export * from "./common/forms";
 export * from "./common/buttons";
 export * from "./layouts";
 export * from "./common/notify";
+export * from "./specific/forms";
 
 export { MarkdownRender, Upload };

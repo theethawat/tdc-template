@@ -6,6 +6,7 @@ const createRouterFile = require("./script/createRouterFiles.js");
 const createActionFile = require("./script/createActionFile.js");
 const createReducerFile = require("./script/createReducerFile.js");
 const createViewFiles = require("./script/createViewFiles.js");
+const createFormFile = require("./script/createFormFile.js");
 
 process.on("exit", (code) => {
   console.log(`About to exit with code: ${code}`);
@@ -31,7 +32,8 @@ const main = () => {
     !process.argv.includes("-nre") && !process.argv.includes("--no-reducer");
   const createViews =
     !process.argv.includes("-nv") && !process.argv.includes("--no-view");
-
+  const createFrom =
+    !process.argv.includes("-nf") && !process.argv.includes("--no-form");
   if (!modelName) {
     console.error("Please provide a model name.");
     process.exit(1);
@@ -77,6 +79,14 @@ const main = () => {
       moduleName,
       thaiName: thaiNameValue,
       isCommon,
+    });
+  }
+
+  if (createFrom) {
+    createFormFile({
+      modelName,
+      isCommon:
+        !process.argv.includes("-s") && !process.argv.includes("--specific"),
     });
   }
 

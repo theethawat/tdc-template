@@ -40,6 +40,11 @@ or example
 - `-m` or `--module` is module name
 - `-t` or `--thai-name` is the name of this model in Thai
 
+Normally it will located in subfolder of `common` represent folder for main logic or general logic for all companies.
+For a **company** specify logic please located in `specific` subfolder which is you can use
+
+- `-s` or `--specific` argument in a command
+
 This made for firstly served in Thai, If you want to implement this into another language, feel free to fork and modify it!
 
 It will generate all the files that you want. 😲😳 For Example
