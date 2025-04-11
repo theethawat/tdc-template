@@ -59,6 +59,49 @@ const createViewFile = ({
   const viewFolderPath = path.join(__dirname, viewFolderLink);
   if (!fs.existsSync(viewFolderPath)) {
     fs.mkdirSync(viewFolderPath, { recursive: true });
+    // Update the main index.js file
+    const mainIndexFile = path.join(
+      __dirname,
+      "../packages/frontend/src/views/index.js"
+    );
+    let mainIndexFileContent = fs.readFileSync(mainIndexFile, "utf8");
+    const newMainImportLine = `import ${moduleName} from "./${
+      isCommon ? "common" : "specific"
+    }/${moduleName}";
+  `;
+    const newMainOutputLine = `${moduleName},\n`;
+    const newMainIndexFileContent = mainIndexFileContent
+      .replace(
+        "/** Script Import New View */",
+        `${newMainImportLine}/** Script Import New View */`
+      )
+      .replace(
+        "/** Script Export New View */",
+        `${newMainOutputLine}/** Script Export New View */`
+      )
+      .replace(
+        "/** Script Export Default New View */",
+        `${newMainOutputLine}/** Script Export Default New View */`
+      );
+    fs.writeFileSync(mainIndexFile, newMainIndexFileContent, "utf8");
+
+    const newAppRoutes = ` <Route path='${moduleAPIName}'>
+                  {/** Script Place For New Route ${moduleName} */}
+                  <Route path='*' element={<Utility.Error404 />} />
+                </Route>`;
+
+    const appFile = path.join(__dirname, "../packages/frontend/src/App.jsx");
+    let appFileContent = fs.readFileSync(appFile, "utf8");
+    const newAppFileContent = appFileContent
+      .replace(
+        "{/** Script Place For New Module */}",
+        `${newAppRoutes}{/** Script Place For New Module */}`
+      )
+      .replace(
+        "/** Script Import New View */",
+        `${moduleName},\n/** Script Import New View */`
+      );
+    fs.writeFileSync(appFile, newAppFileContent, "utf8");
   }
 
   // Writing the new file
@@ -115,6 +158,25 @@ const createViewFile = ({
     );
 
   fs.writeFileSync(eachViewIndexFile, newIndexFileContent, "utf8");
+
+  // Update App.jsx
+  const appFilePath = path.join(__dirname, "../packages/frontend/src/App.jsx");
+  let appFileContent = fs.readFileSync(appFilePath, "utf8");
+  const newRouteLine = `<Route path='${modelAPIName}'>
+    <Route path='create' element={<${moduleName}.Create${modelName} />} />
+    <Route path='edit/:id' element={<${moduleName}.Edit${modelName} />} />
+    <Route path='detail/:id' element={<${moduleName}.Detail${modelName} />} />
+    <Route path='*' element={<${moduleName}.Management${modelName} />} />
+    </Route>
+    {/** Script Place For New Route ${moduleName} */}`;
+  const newAppFileContent = appFileContent.replace(
+    `{/** Script Place For New Route ${modelName} */}`,
+    newRouteLine
+  );
+  fs.writeFileSync(appFilePath, newRouteLinewAppFileContentne, "utf8");
+  console.log(
+    `Create ${modelName} view files successfully in ${viewFolderLink}`
+  );
 };
 
 module.exports = createViewFile;

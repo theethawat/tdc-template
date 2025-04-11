@@ -3,9 +3,21 @@ import { useEffect } from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { Auth, Home, Management, Utility } from "./views";
+import {
+  Auth,
+  Home,
+  Management,
+  Utility,
+  /** Script Import New View */
+} from "./views";
 import * as actions from "./redux/actions";
 
+{
+  /** ห้ามลบคอมเมนต์ Script Place For New Route 
+   * Script Import New View ,
+  และ Script Place For New Module นะครับ 
+  ผูกกับ Script เอาไว้*/
+}
 function App() {
   const dispatch = useDispatch();
 
@@ -32,11 +44,11 @@ function App() {
                 path='user/detail/:id'
                 element={<Management.DetailUser />}
               />
+              {/** Script Place For New Route Management */}
               <Route path='*' element={<Utility.Error404 />} />
             </Route>
-            <Route path='dashboard'>
-              <Route index element={<div>dashboard index</div>} />
-            </Route>
+
+            {/** Script Place For New Module */}
             <Route index element={<Home />} />
           </Routes>
         ) : (
