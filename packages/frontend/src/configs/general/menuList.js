@@ -12,7 +12,7 @@ const menuList = [
   { label: "Dashboard", icon: IconGauge },
 
   {
-    label: "Settings",
+    label: "Management",
     icon: IconAdjustments,
     initiallyOpened: true,
     links: [

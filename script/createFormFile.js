@@ -43,11 +43,11 @@ const createFormFile = ({ modelName: inputModelName, isCommon = true }) => {
     )
     .replace(
       " /** Script Export New Form */",
-      `${modelName},\n /** Script Export New Form */`
+      `${modelName}Form,\n /** Script Export New Form */`
     )
     .replace(
       "/** Script Export Default New Form */",
-      `${modelName},\n/** Script Export Default New Form */`
+      `${modelName}Form,\n/** Script Export Default New Form */`
     );
 
   fs.writeFileSync(eachViewIndexFile, newIndexFileContent, "utf8");
