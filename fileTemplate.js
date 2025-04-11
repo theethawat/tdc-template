@@ -72,12 +72,12 @@ const main = () => {
     const isCommon =
       !process.argv.includes("-s") && !process.argv.includes("--specific");
 
-    // createViewFiles({
-    //   modelName,
-    //   moduleName,
-    //   thaiName: thaiNameValue,
-    //   isCommon,
-    // });
+    createViewFiles({
+      modelName,
+      moduleName,
+      thaiName: thaiNameValue,
+      isCommon,
+    });
   }
 
   console.log("Create File Script Successfully Run");
