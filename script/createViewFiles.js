@@ -173,7 +173,7 @@ const createViewFile = ({
     `{/** Script Place For New Route ${modelName} */}`,
     newRouteLine
   );
-  fs.writeFileSync(appFilePath, newRouteLinewAppFileContentne, "utf8");
+  fs.writeFileSync(appFilePath, newAppFileContent, "utf8");
   console.log(
     `Create ${modelName} view files successfully in ${viewFolderLink}`
   );

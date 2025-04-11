@@ -62,6 +62,7 @@ const main = () => {
       console.error("Please provide a module name.");
       process.exit(1);
     }
+    console.log("Module Name", moduleName);
     const thaiNameIndex = process.argv.includes("-t")
       ? process.argv.indexOf("-t") + 1
       : process.argv.indexOf("--thai-name") + 1;
@@ -71,12 +72,12 @@ const main = () => {
     const isCommon =
       !process.argv.includes("-s") && !process.argv.includes("--specific");
 
-    createViewFiles({
-      modelName,
-      moduleName,
-      thaiName: thaiNameValue,
-      isCommon,
-    });
+    // createViewFiles({
+    //   modelName,
+    //   moduleName,
+    //   thaiName: thaiNameValue,
+    //   isCommon,
+    // });
   }
 
   console.log("Create File Script Successfully Run");
