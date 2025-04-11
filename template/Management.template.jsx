@@ -97,7 +97,7 @@ export default function Management{{modelName}}() {
             </Table.Thead>
             <Table.Tbody>
               {!{{modelCamelCase}}?.isReady && <Skeleton height={8} mt={6} radius='xl' />}
-              {{{modelCamelCase}}?.isReady &&
+              {  {{modelCamelCase}}?.isReady &&
                 _.map({{modelCamelCase}}?.rows, (each, index) => (
                   <Table.Tr key={index}>
                     <Table.Td> {(page - 1) * size + index + 1}</Table.Td>

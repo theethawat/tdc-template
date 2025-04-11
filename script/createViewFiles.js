@@ -127,7 +127,7 @@ const createViewFile = ({
   );
 
   //  Import to index file
-  const eachViewIndexFile = path.join(__dirname, "viewFolderLink", "index.js");
+  const eachViewIndexFile = path.join(__dirname, viewFolderLink, "index.js");
 
   let indexFileContent = "";
   if (fs.existsSync(eachViewIndexFile)) {
