@@ -1,6 +1,7 @@
 export * from "./MeActions";
 export * from "./UserAction";
 export * from "./DepatmentActions";
+export * from "./GoodsAction";
 /** Script Import New Action */
 
 /** ห้ามลบคอมเมนต์ตรงคำว่า Script Add New Action นะเป็น Script ที่วางเอาไว้ ให้มันอยู่ล่างสุดเสมอ

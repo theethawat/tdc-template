@@ -8,7 +8,8 @@ import {
   Home,
   Management,
   Utility,
-  /** Script Import New View */
+  Inventory,
+/** Script Import New View */
 } from "./views";
 import * as actions from "./redux/actions";
 
@@ -49,7 +50,16 @@ function App() {
               <Route path='*' element={<Utility.Error404 />} />
             </Route>
 
-            {/** Script Place For New Module */}
+             <Route path='inventory'>
+                  <Route path='goods'>
+    <Route path='create' element={<Inventory.CreateGoods />} />
+    <Route path='edit/:id' element={<Inventory.EditGoods />} />
+    <Route path='detail/:id' element={<Inventory.DetailGoods />} />
+    <Route index element={<Inventory.ManagementGoods />} />
+    </Route>
+     {/** Script Place For New Route Inventory */}
+                  <Route path='*' element={<Utility.Error404 />} />
+                </Route>{/** Script Place For New Module */}
             <Route index element={<Home />} />
           </Routes>
         ) : (

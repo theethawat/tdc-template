@@ -2,14 +2,16 @@ import Auth from "./common/Auth";
 import Home from "./Home";
 import Management from "./common/Management";
 import Utility from "./common/Utility";
-/** Script Import New View */
+import Inventory from "./common/Inventory";
+  /** Script Import New View */
 
 export {
   Auth,
   Home,
   Management,
   Utility,
-  /** Script Export New View */
+  Inventory,
+/** Script Export New View */
 };
 
 export default {
@@ -17,7 +19,8 @@ export default {
   Home,
   Management,
   Utility,
-  /** Script Export Default New View */
+  Inventory,
+/** Script Export Default New View */
 };
 
 /** ห้ามลบคอมเมนต์ตรงคำว่า Script Export New View และ

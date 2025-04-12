@@ -2,67 +2,67 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { MainLayout } from "../../../components/layouts";
-import { Pagination,useNotify } from "../../../components";
+import { Pagination, useNotify } from "../../../components";
 import * as actions from "../../../redux/actions";
-import { Table, Button, Skeleton ,TextInput} from "@mantine/core";
+import { Table, Button, Skeleton, TextInput } from "@mantine/core";
 import {
   IconEdit,
   IconFileDescription,
   IconTrash,
-  IconSquarePlus,IconSearch
+  IconSquarePlus,
+  IconSearch,
 } from "@tabler/icons-react";
 import _ from "lodash";
 import { modals } from "@mantine/modals";
 
-export default function Management{{modelName}}() {
+export default function ManagementGoods() {
   const dispatch = useDispatch();
   const notify = useNotify();
 
-  const {{modelCamelCase}} = useSelector((state) => state.{{modelCamelCase}});
+  const goods = useSelector((state) => state.goods);
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(10);
   const [total, setTotal] = useState(0);
-  const [name,setName] = useState("");
+  const [name, setName] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const queryData = async()=>{
+  const queryData = async () => {
     try {
-        dispatch(actions.getAll{{modelName}}({ page, size,name }));
-        
+      dispatch(actions.getAllGoods({ page, size, name }));
     } catch (error) {
-        notify.error({ title: "ดึงข้อมูลไม่สำเร็จ", message: error.message });
+      notify.error({ title: "ดึงข้อมูลไม่สำเร็จ", message: error.message });
     }
-  }
+  };
 
   useEffect(() => {
-    queryData()
+    queryData();
 
     return () => {};
-  }, [page, size,name]);
+  }, [page, size, name]);
 
   useEffect(() => {
-    setTotal({{modelCamelCase}}?.total);
+    setTotal(goods?.total);
 
     return () => {};
-  }, [{{modelCamelCase}}]);
+  }, [goods]);
 
-   useEffect(() => {
-     const delayDebounceFn = setTimeout(() => {
-       setName(searchTerm);
-       setPage(1);
-     }, 500);
-     return () => clearTimeout(delayDebounceFn);
-   }, [searchTerm]);
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      setName(searchTerm);
+      setPage(1);
+    }, 500);
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm]);
 
   const handleDelete = (id) => {
     modals.openConfirmModal({
       title: "ยืนยันการลบ",
-      children: <div>คุณต้องการลบ{{thaiName}}ใช่หรือไม่</div>,
+      children: <div>คุณต้องการลบวัตถุดิบและสินค้าใช่หรือไม่</div>,
       labels: { confirm: "ยืนยัน", cancel: "ยกเลิก" },
       onConfirm: () => {
-        dispatch(actions.deleteOne{{modelName}}(id))
+        dispatch(actions.deleteOneGoods(id))
           .then(() => {
-            dispatch(actions.getAll{{modelName}}({ page, size }));
+            dispatch(actions.getAllGoods({ page, size }));
           })
           .catch((error) => {
             console.error(error);
@@ -77,16 +77,16 @@ export default function Management{{modelName}}() {
   return (
     <div>
       <MainLayout
-        title='จัดการ{{thaiName}}'
+        title='จัดการวัตถุดิบและสินค้า'
         rightContainer={
-          <Link to='/{{moduleRouterName}}/{{routerName}}/create'>
+          <Link to='/inventory/goods/create'>
             <Button leftSection={<IconSquarePlus size={18} />}>
-              เพิ่ม{{thaiName}}
+              เพิ่มวัตถุดิบและสินค้า
             </Button>
           </Link>
         }
       >
-         <div className='my-6'>
+        <div className='my-6'>
           <TextInput
             mt='md'
             rightSectionPointerEvents='none'
@@ -105,41 +105,41 @@ export default function Management{{modelName}}() {
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>
-              {!{{modelCamelCase}}?.isReady && <Skeleton height={8} mt={6} radius='xl' />}
-              {  {{modelCamelCase}}?.isReady &&
-                _.map({{modelCamelCase}}?.rows, (each, index) => (
+              {!goods?.isReady && <Skeleton height={8} mt={6} radius='xl' />}
+              {goods?.isReady &&
+                _.map(goods?.rows, (each, index) => (
                   <Table.Tr key={index}>
                     <Table.Td> {(page - 1) * size + index + 1}</Table.Td>
                     <Table.Td>{each?.name}</Table.Td>
                     <Table.Td>
                       <div className='flex gap-2'>
-                        <Link to={`/{{moduleRouterName}}/{{routerName}}/detail/${each?._id}`}>
+                        <Link to={`/inventory/goods/detail/${each?._id}`}>
                           <Button
                             variant='filled'
                             color='blue'
+                            size='xs'
                             leftSection={<IconFileDescription size={18} />}
-                            size="xs"
                           >
                             รายละเอียด
                           </Button>
                         </Link>
-                        <Link to={`/{{moduleRouterName}}/{{routerName}}/edit/${each?._id}`}>
+                        <Link to={`/inventory/goods/edit/${each?._id}`}>
                           <Button
                             variant='filled'
                             color='yellow'
                             leftSection={<IconEdit size={18} />}
-                            size="xs"
+                            size='xs'
                           >
                             แก้ไข
                           </Button>
                         </Link>
-                        
+
                         <Button
                           variant='filled'
                           color='red'
                           leftSection={<IconTrash size={18} />}
                           onClick={() => handleDelete(each?._id)}
-                          size="xs"
+                          size='xs'
                         >
                           ลบ
                         </Button>

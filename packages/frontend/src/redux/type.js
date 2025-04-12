@@ -15,6 +15,13 @@ export const DEPARTMENT_ALL = "DEPARTMENT_ALL";
 export const DEPARTMENT_ERROR = "DEPARTMENT_ERROR";
 export const DEPARTMENT_LOADING = "DEPARTMENT_LOADING";
 
+export const GOODS_GET = "GOODS_GET";
+export const GOODS_ALL = "GOODS_ALL";
+export const GOODS_CREATE = "GOODS_CREATE";
+export const GOODS_EDIT = "GOODS_EDIT";
+export const GOODS_ERROR = "GOODS_ERROR";
+export const GOODS_DELETE = "GOODS_DELETE";
+export const GOODS_LOADING = "GOODS_LOADING";
 /** Script Add New Const */
 
 /** ห้ามลบคอมเมนต์ตรงคำว่า Script Add New Const นะเป็น Script ที่วางเอาไว้ ให้มันอยู่ล่างสุดเสมอ

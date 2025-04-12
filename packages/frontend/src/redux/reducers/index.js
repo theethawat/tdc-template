@@ -3,13 +3,15 @@ import { combineReducers } from "redux";
 import MeReducer from "./MeReducers";
 import UserReducer from "./UserReducer";
 import DepartmentReducers from "./DepartmentReducers";
+import GoodsReducer from "./GoodsReducer";
 /** Script Import New Reducer */
 
 const rootReducers = combineReducers({
   me: MeReducer,
   user: UserReducer,
   department: DepartmentReducers,
-  /** Script Add New Reducer */
+  goods:GoodsReducer,
+/** Script Add New Reducer */
 });
 
 export default rootReducers;
