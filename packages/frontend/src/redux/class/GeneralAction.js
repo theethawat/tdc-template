@@ -49,6 +49,10 @@ class GeneralAction {
   getOneData(id) {
     return async (dispatch) => {
       try {
+        dispatch({
+          type: this.loadingConst,
+          payload: { isReady: false },
+        });
         const { data, status } = await api.get(
           `${import.meta.env.VITE_API_URL}/${this.subURL}/${id}`
         );

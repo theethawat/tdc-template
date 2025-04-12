@@ -2,11 +2,13 @@ import { combineReducers } from "redux";
 
 import MeReducer from "./MeReducers";
 import UserReducer from "./UserReducer";
+import DepartmentReducers from "./DepartmentReducers";
 /** Script Import New Reducer */
 
 const rootReducers = combineReducers({
   me: MeReducer,
   user: UserReducer,
+  department: DepartmentReducers,
   /** Script Add New Reducer */
 });
 

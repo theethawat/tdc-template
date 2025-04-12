@@ -1,9 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { MainLayout, UserForm, useNotify } from "../../../components";
 import * as actions from "../../../redux/actions";
 import { useForm } from "react-hook-form";
-import { Button } from "@mantine/core";
+import { Button, Switch } from "@mantine/core";
 import { useNavigate } from "react-router";
+import { generate as wordRandom } from "random-words";
 
 import _ from "lodash";
 
@@ -12,10 +14,29 @@ export default function CreateUser() {
   const navigate = useNavigate();
   const { control, handleSubmit, watch } = useForm();
   const notify = useNotify();
+  const [enableLogin, setEnableLogin] = useState(true);
+  const department = useSelector((state) => state.department);
+
+  useEffect(() => {
+    dispatch(actions.getAllDepartment({}));
+
+    return () => {};
+  }, []);
 
   const handleSubmitData = async (data) => {
-    dispatch(actions.createOneUser(data))
-      .then((result) => {
+    const payload = data;
+
+    // ใส่กันไว้ เนื่้องจากล็อกว่า username must unique
+    if (!enableLogin) {
+      const firstName = _.split(data.name, " ")?.[0] || "";
+      const randomSuffix = wordRandom({ exactly: 2, join: "-" });
+      payload.username = firstName + randomSuffix;
+      payload.password = "";
+      payload.allowLogin = false;
+    }
+
+    dispatch(actions.createOneUser(payload))
+      .then(() => {
         notify.success({
           title: "เพิ่มผู้ใช้งานสำเร็จ",
           message: "เพิ่มผู้ใช้งานสำเร็จ",
@@ -38,7 +59,18 @@ export default function CreateUser() {
         ]}
       >
         <form onSubmit={handleSubmit(handleSubmitData)}>
-          <UserForm control={control} watch={watch} showPasswordInput />
+          <Switch
+            defaultChecked
+            checked={enableLogin}
+            onChange={(e) => setEnableLogin(e.target.checked)}
+            label='สร้างให้สามารถ Login ได้'
+          />
+          <UserForm
+            control={control}
+            watch={watch}
+            showPasswordInput={enableLogin}
+            departments={department?.rows}
+          />
 
           <div className='flex justify-end'>
             <Button type='submit'>บันทึก</Button>

@@ -11,6 +11,10 @@ export const USER_ERROR = "USER_ERROR";
 export const USER_DELETE = "USER_DELETE";
 export const USER_LOADING = "USER_LOADING";
 
+export const DEPARTMENT_ALL = "DEPARTMENT_ALL";
+export const DEPARTMENT_ERROR = "DEPARTMENT_ERROR";
+export const DEPARTMENT_LOADING = "DEPARTMENT_LOADING";
+
 /** Script Add New Const */
 
 /** ห้ามลบคอมเมนต์ตรงคำว่า Script Add New Const นะเป็น Script ที่วางเอาไว้ ให้มันอยู่ล่างสุดเสมอ

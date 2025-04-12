@@ -39,9 +39,11 @@ const verifyRequest = async (req, res, next) => {
     } else {
       console.log('Cannot Verify Request');
       res.status(403);
+      res.send({ error: 'Cannot Verify Request, Token Not Found' });
     }
   } catch (error) {
     console.log('Cannot Verify Request', error.message);
+    res.send({ error: `Cannot Verify Request, ${error.message}` });
 
     res.status(403);
   }

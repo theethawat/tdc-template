@@ -10,6 +10,7 @@ export default function EditUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
+  const department = useSelector((state) => state.department);
   const { control, handleSubmit, watch } = useForm();
   const notify = useNotify();
   const params = useParams();
@@ -30,6 +31,7 @@ export default function EditUser() {
   };
 
   useEffect(() => {
+    dispatch(actions.getAllDepartment({}));
     dispatch(actions.getOneUser(params.id))
       .then(() => {})
       .catch((err) => {
@@ -56,8 +58,12 @@ export default function EditUser() {
         ]}
       >
         <form onSubmit={handleSubmit(handleSubmitData)}>
-          <UserForm control={control} watch={watch} defaultValue={user} />
-
+          <UserForm
+            control={control}
+            watch={watch}
+            defaultValue={user}
+            departments={department?.rows}
+          />
           <div className='flex justify-end'>
             <Button type='submit'>บันทึก</Button>
           </div>

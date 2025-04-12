@@ -105,6 +105,46 @@ export const onLogin = async (req, res) => {
   }
 };
 
+// Not create department model due to it will be lot of query
+// we just create as a tag and then use aggregate to find it out
+export const onGetAllDepartments = async (req, res) => {
+  try {
+    const pipeline = [
+      {
+        $group: {
+          _id: null,
+          departments: { $addToSet: '$departments' },
+        },
+      },
+      {
+        $project: {
+          departments: {
+            $reduce: {
+              input: '$departments',
+              initialValue: [],
+              in: {
+                $concatArrays: ['$$value', '$$this'],
+              },
+            },
+          },
+        },
+      },
+      {
+        $replaceRoot: {
+          newRoot: {
+            rows: '$departments',
+          },
+        },
+      },
+    ];
+    const result = await UserModel.aggregate(pipeline);
+    res.status(200).send(result?.[0]);
+  } catch (error) {
+    console.error('error', error);
+    res.status(400).send({ error });
+  }
+};
+
 export default {
   onReadAll,
   onReadOne,
@@ -112,4 +152,5 @@ export default {
   onEditOne,
   onDeleteOne,
   onLogin,
+  onGetAllDepartments,
 };

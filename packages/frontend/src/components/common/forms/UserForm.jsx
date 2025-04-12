@@ -1,4 +1,5 @@
-import { Input, PasswordInput } from "@mantine/core";
+import { Input, PasswordInput, TagsInput } from "@mantine/core";
+import _ from "lodash";
 import { Controller } from "react-hook-form";
 
 const UserForm = ({
@@ -6,6 +7,7 @@ const UserForm = ({
   defaultValue = {},
   showPasswordInput = false,
   watch,
+  departments,
 }) => {
   return (
     <div className='flex flex-wrap'>
@@ -17,6 +19,23 @@ const UserForm = ({
             defaultValue={defaultValue?.name}
             render={({ field }) => (
               <Input placeholder='สมชาย รักสามัคคี' {...field} />
+            )}
+          />
+        </Input.Wrapper>
+      </div>{" "}
+      <div className='w-full my-1 px-1'>
+        <Input.Wrapper label='แผนก'>
+          <Controller
+            control={control}
+            name='departments'
+            defaultValue={defaultValue?.departments}
+            render={({ field }) => (
+              <TagsInput
+                {...field}
+                data={departments || []}
+                defaultValue={field.value}
+                placeholder='พิมพ์ชื่อแผนกที่ต้องการ'
+              />
             )}
           />
         </Input.Wrapper>

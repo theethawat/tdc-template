@@ -94,6 +94,7 @@ export default function ManagementUser() {
                 <Table.Th>รายการที่</Table.Th>
                 <Table.Th>ชื่อ-สกุล</Table.Th>
                 <Table.Th>Username</Table.Th>
+                <Table.Th>แผนก</Table.Th>
                 <Table.Th>ดำเนินการ</Table.Th>
               </Table.Tr>
             </Table.Thead>
@@ -104,7 +105,12 @@ export default function ManagementUser() {
                   <Table.Tr key={index}>
                     <Table.Td> {(page - 1) * size + index + 1}</Table.Td>
                     <Table.Td>{each?.name}</Table.Td>
-                    <Table.Td>{each?.username}</Table.Td>
+                    <Table.Td>
+                      {each?.allowLogin ? each?.username : "-"}
+                    </Table.Td>
+                    <Table.Td>
+                      {_.map(each?.departments, (dept) => dept)?.join(", ")}
+                    </Table.Td>
                     <Table.Td>
                       <div className='flex gap-2'>
                         <Link to={`/management/user/detail/${each?._id}`}>
@@ -112,6 +118,7 @@ export default function ManagementUser() {
                             variant='filled'
                             color='blue'
                             leftSection={<IconFileDescription size={18} />}
+                            size='xs'
                           >
                             รายละเอียด
                           </Button>
@@ -121,6 +128,7 @@ export default function ManagementUser() {
                             variant='filled'
                             color='yellow'
                             leftSection={<IconEdit size={18} />}
+                            size='xs'
                           >
                             แก้ไข
                           </Button>
@@ -132,6 +140,7 @@ export default function ManagementUser() {
                             variant='filled'
                             color='black'
                             leftSection={<IconKey size={18} />}
+                            size='xs'
                           >
                             แก้รหัสผ่าน
                           </Button>
@@ -141,6 +150,7 @@ export default function ManagementUser() {
                           color='red'
                           leftSection={<IconTrash size={18} />}
                           onClick={() => handleDelete(each?._id)}
+                          size='xs'
                         >
                           ลบ
                         </Button>

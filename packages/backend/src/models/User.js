@@ -13,8 +13,10 @@ const UserSchema = new Schema({
     index: true,
     unique: true,
   },
+  allowLogin: { type: Boolean, default: true },
   password: String,
   tel: String,
+  departments: [String],
   role: { type: String, default: 'USER' },
 });
 
