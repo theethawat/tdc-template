@@ -1,10 +1,6 @@
 import app from "./app";
 import api from "./api";
-import navigation from "./general/navigation";
-import menuList from "./general/menuList";
-import specifyMenuList from "./specific";
+import navigation from "./navigation";
 
-const allMenuList = [...menuList, ...specifyMenuList];
-
-export { app, api, navigation, allMenuList as menu };
-export default { app, api, navigation, menu: allMenuList };
+export { app, api, navigation };
+export default { app, api, navigation };

@@ -12,7 +12,7 @@ const updateMenuList = ({
   const moduleName = changecase.pascalCase(inputModuleName);
   const moduleAPIName = changecase.kebabCase(inputModuleName);
 
-  const menuListLink = "../packages/frontend/src/configs/general/menuList.js";
+  const menuListLink = "../packages/constants/menuList.js";
   const viewFolderPath = path.join(__dirname, menuListLink);
   const menuListFile = fs.readFileSync(viewFolderPath, "utf8");
 

@@ -1,3 +1,4 @@
 import information from "./information.js";
+import menuList from "./menuList.js";
 
-export { information };
+export { information, menuList };

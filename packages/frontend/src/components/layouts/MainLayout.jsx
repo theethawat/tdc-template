@@ -10,12 +10,12 @@ import {
   ScrollArea,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { menuList } from "@iarc-programing/tp2025-constants";
+import { IconChevronLeft } from "@tabler/icons-react";
 
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { NavHeader, Footer } from "../common/navbar";
-import menuList from "../../configs/general/menuList";
-import { IconChevronLeft } from "@tabler/icons-react";
 import _ from "lodash";
 import { UserButton } from "../common/buttons";
 import classes from "../../assets/css/NavbarNested.module.css";

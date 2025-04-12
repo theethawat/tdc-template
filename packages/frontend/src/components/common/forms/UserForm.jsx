@@ -1,6 +1,7 @@
 import { Input, PasswordInput, TagsInput } from "@mantine/core";
-import _ from "lodash";
 import { Controller } from "react-hook-form";
+import _ from "lodash";
+import AccessForm from "./AccessForm";
 
 const UserForm = ({
   control,
@@ -98,6 +99,11 @@ const UserForm = ({
           </div>
         </div>
       )}
+      <AccessForm
+        control={control}
+        defaultValue={defaultValue?.access}
+        watch={watch}
+      />
     </div>
   );
 };
