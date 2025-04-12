@@ -11,7 +11,6 @@ import {
   IconSettings,
   IconStar,
   IconSwitchHorizontal,
-  IconMenu2,
 } from "@tabler/icons-react";
 import classes from "../../../assets/css/HeaderTab.module.css";
 import {
@@ -21,17 +20,13 @@ import {
   Text,
   UnstyledButton,
   useMantineTheme,
-  Button,
+  Burger,
 } from "@mantine/core";
 import { information } from "@iarc-programing/tp2025-constants";
 import Avvvatars from "avvvatars-react";
 import * as actions from "../../../redux/actions";
 import { useNavigate } from "react-router-dom";
-export default function NavHeader({
-  userData,
-  handleOpenDrawer,
-  forceDisplay,
-}) {
+export default function NavHeader({ userData, opened, toggle }) {
   const dispatch = useDispatch();
   const theme = useMantineTheme();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
@@ -39,25 +34,23 @@ export default function NavHeader({
 
   return (
     <div className={classes.header}>
-      <Container className={classes.mainSection} size='md'>
+      <Container className={classes.mainSection} size=''>
         <Group justify='space-between'>
-          <div
-            className={`flex gap-2 items-center ${
-              forceDisplay ? "" : "lg:hidden"
-            }`}
-          >
+          <div className={"flex gap-2 items-center"}>
             <Link to='/'>
               <div className='text-lg font-semibold ml-6'>
                 {information.title}
               </div>
             </Link>
             <div className='lg:hidden'>
-              <Button variant='default' size='sm' onClick={handleOpenDrawer}>
-                <IconMenu2 size={16} />
-              </Button>
+              <Burger
+                opened={opened}
+                onClick={toggle}
+                hiddenFrom='sm'
+                size='sm'
+              />
             </div>
           </div>
-          <div className='hidden lg:block'></div>
           <Menu
             width={260}
             position='bottom-end'
@@ -65,6 +58,7 @@ export default function NavHeader({
             onClose={() => setUserMenuOpened(false)}
             onOpen={() => setUserMenuOpened(true)}
             withinPortal
+            opened={userMenuOpened}
           >
             <Menu.Target>
               <UnstyledButton>
@@ -159,5 +153,4 @@ NavHeader.defaultProps = {
     role: "",
     username: "",
   },
-  currentPage: "",
 };
