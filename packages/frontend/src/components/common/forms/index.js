@@ -2,15 +2,18 @@ import UserForm from "./UserForm";
 import PasswordForm from "./PasswordForm";
 import GoodsForm from "./GoodsForm";
 import CustomerForm from "./CustomerForm";
-import GoodsTypeForm from "./GoodsTypeForm";/** Script Import New Form */
+import GoodsTypeForm from "./GoodsTypeForm";
+import AccessForm from "./AccessForm";
+/** Script Import New Form */
 
 export {
   UserForm,
   PasswordForm,
   GoodsForm,
   CustomerForm,
- GoodsTypeForm,
- /** Script Export New Form */
+  GoodsTypeForm,
+  AccessForm,
+  /** Script Export New Form */
 };
 
 export default {
@@ -19,7 +22,8 @@ export default {
   GoodsForm,
   CustomerForm,
   GoodsTypeForm,
-/** Script Export Default New Form */
+  AccessForm,
+  /** Script Export Default New Form */
 };
 
 /**

@@ -33,7 +33,6 @@ export default function MainLayout({
   const me = useSelector((state) => state.me);
   const navigate = useNavigate();
   const [opened, { toggle }] = useDisclosure(false);
-  console.log("location", window.location.pathname);
   const links = menuList.map((item) => (
     <LinksGroup
       {...item}

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { MainLayout, {{modelName}}Form, useNotify } from "../../../components";
-import * as actions from "../../../redux/actions";
+import { MainLayout, {{modelName}}Form, useNotify } from "@/components";
+import * as actions from "@/redux/actions";
 import { useForm } from "react-hook-form";
 import { Button } from "@mantine/core";
 import { useNavigate, useParams } from "react-router";

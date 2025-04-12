@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { MainLayout } from "../../../components/layouts";
-import { Pagination,useNotify } from "../../../components";
-import * as actions from "../../../redux/actions";
+import { MainLayout } from "@/components/layouts";
+import { Pagination,useNotify } from "@/components";
+import * as actions from "@/redux/actions";
 import { Table, Button, Skeleton ,TextInput} from "@mantine/core";
 import {
   IconEdit,

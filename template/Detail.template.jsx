@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { MainLayout, useNotify } from "../../../components";
-import * as actions from "../../../redux/actions";
+import { MainLayout, useNotify } from "@/components";
+import * as actions from "@/redux/actions";
 import { Paper } from "@mantine/core";
 import { useParams } from "react-router";
 
