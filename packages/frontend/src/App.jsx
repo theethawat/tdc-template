@@ -44,21 +44,7 @@ function App() {
                 path='user/detail/:id'
                 element={<Management.DetailUser />}
               />
-              <Route path='department'>
-                <Route
-                  path='create'
-                  element={<Management.CreateDepartment />}
-                />
-                <Route
-                  path='edit/:id'
-                  element={<Management.EditDepartment />}
-                />
-                <Route
-                  path='detail/:id'
-                  element={<Management.DetailDepartment />}
-                />
-                <Route index element={<Management.ManagementDepartment />} />
-              </Route>
+
               {/** Script Place For New Route Management */}
               <Route path='*' element={<Utility.Error404 />} />
             </Route>

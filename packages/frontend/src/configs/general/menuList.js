@@ -11,10 +11,6 @@ const menuList = [
         label: "จัดการผู้เข้าใช้งาน User Account",
         link: "/management/user",
       },
-      {
-        label: "จัดการแผนก",
-        link: "/management/department",
-      },
       /** Script Add Link Management */
     ],
   },
