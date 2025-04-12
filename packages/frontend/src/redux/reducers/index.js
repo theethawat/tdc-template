@@ -4,6 +4,8 @@ import MeReducer from "./MeReducers";
 import UserReducer from "./UserReducer";
 import DepartmentReducers from "./DepartmentReducers";
 import GoodsReducer from "./GoodsReducer";
+import CustomerReducer from "./CustomerReducer";
+import GoodsTypeReducer from "./GoodsTypeReducer";
 /** Script Import New Reducer */
 
 const rootReducers = combineReducers({
@@ -11,6 +13,8 @@ const rootReducers = combineReducers({
   user: UserReducer,
   department: DepartmentReducers,
   goods:GoodsReducer,
+customer:CustomerReducer,
+goodsType:GoodsTypeReducer,
 /** Script Add New Reducer */
 });
 

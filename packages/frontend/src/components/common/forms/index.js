@@ -1,20 +1,25 @@
 import UserForm from "./UserForm";
 import PasswordForm from "./PasswordForm";
 import GoodsForm from "./GoodsForm";
-/** Script Inport New Form */
+import CustomerForm from "./CustomerForm";
+import GoodsTypeForm from "./GoodsTypeForm";/** Script Import New Form */
 
 export {
   UserForm,
   PasswordForm,
   GoodsForm,
-  /** Script Export New Form */
+  CustomerForm,
+ GoodsTypeForm,
+ /** Script Export New Form */
 };
 
 export default {
   UserForm,
   PasswordForm,
   GoodsForm,
-  /** Script Export Default New Form */
+  CustomerForm,
+  GoodsTypeForm,
+/** Script Export Default New Form */
 };
 
 /**

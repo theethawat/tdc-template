@@ -3,6 +3,7 @@ import Home from "./Home";
 import Management from "./common/Management";
 import Utility from "./common/Utility";
 import Inventory from "./common/Inventory";
+  import Crm from "./common/Crm";
   /** Script Import New View */
 
 export {
@@ -11,6 +12,7 @@ export {
   Management,
   Utility,
   Inventory,
+Crm,
 /** Script Export New View */
 };
 
@@ -20,6 +22,7 @@ export default {
   Management,
   Utility,
   Inventory,
+Crm,
 /** Script Export Default New View */
 };
 

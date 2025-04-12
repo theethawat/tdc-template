@@ -9,6 +9,7 @@ import {
   Management,
   Utility,
   Inventory,
+Crm,
 /** Script Import New View */
 } from "./views";
 import * as actions from "./redux/actions";
@@ -57,7 +58,22 @@ function App() {
     <Route path='detail/:id' element={<Inventory.DetailGoods />} />
     <Route index element={<Inventory.ManagementGoods />} />
     </Route>
+     <Route path='goods-type'>
+    <Route path='create' element={<Inventory.CreateGoodsType />} />
+    <Route path='edit/:id' element={<Inventory.EditGoodsType />} />
+    <Route path='detail/:id' element={<Inventory.DetailGoodsType />} />
+    <Route index element={<Inventory.ManagementGoodsType />} />
+    </Route>
      {/** Script Place For New Route Inventory */}
+                  <Route path='*' element={<Utility.Error404 />} />
+                </Route> <Route path='crm'>
+                  <Route path='customer'>
+    <Route path='create' element={<Crm.CreateCustomer />} />
+    <Route path='edit/:id' element={<Crm.EditCustomer />} />
+    <Route path='detail/:id' element={<Crm.DetailCustomer />} />
+    <Route index element={<Crm.ManagementCustomer />} />
+    </Route>
+     {/** Script Place For New Route Crm */}
                   <Route path='*' element={<Utility.Error404 />} />
                 </Route>{/** Script Place For New Module */}
             <Route index element={<Home />} />

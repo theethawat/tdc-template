@@ -22,6 +22,20 @@ export const GOODS_EDIT = "GOODS_EDIT";
 export const GOODS_ERROR = "GOODS_ERROR";
 export const GOODS_DELETE = "GOODS_DELETE";
 export const GOODS_LOADING = "GOODS_LOADING";
+export const CUSTOMER_GET = "CUSTOMER_GET";
+export const CUSTOMER_ALL = "CUSTOMER_ALL";
+export const CUSTOMER_CREATE = "CUSTOMER_CREATE";
+export const CUSTOMER_EDIT = "CUSTOMER_EDIT";
+export const CUSTOMER_ERROR = "CUSTOMER_ERROR";
+export const CUSTOMER_DELETE = "CUSTOMER_DELETE";
+export const CUSTOMER_LOADING = "CUSTOMER_LOADING";
+export const GOODS_TYPE_GET = "GOODS_TYPE_GET";
+export const GOODS_TYPE_ALL = "GOODS_TYPE_ALL";
+export const GOODS_TYPE_CREATE = "GOODS_TYPE_CREATE";
+export const GOODS_TYPE_EDIT = "GOODS_TYPE_EDIT";
+export const GOODS_TYPE_ERROR = "GOODS_TYPE_ERROR";
+export const GOODS_TYPE_DELETE = "GOODS_TYPE_DELETE";
+export const GOODS_TYPE_LOADING = "GOODS_TYPE_LOADING";
 /** Script Add New Const */
 
 /** ห้ามลบคอมเมนต์ตรงคำว่า Script Add New Const นะเป็น Script ที่วางเอาไว้ ให้มันอยู่ล่างสุดเสมอ
