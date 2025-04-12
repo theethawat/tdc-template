@@ -44,7 +44,15 @@ export default function EditDepartment() {
 
   return (
     <div>
-      <MainLayout title='แก้ไขแผนก' useBackButton isReady={department.isReady}>
+      <MainLayout
+        title='แก้ไขแผนก'
+        useBackButton
+        isReady={department.isReady}
+        hirachyList={[
+          { label: "หน้าหลัก", link: "/" },
+          { label: "แผนก", link: "/management/deparment" },
+        ]}
+      >
         <form onSubmit={handleSubmit(handleSubmitData)}>
           <DepartmentForm
             control={control}

@@ -48,6 +48,10 @@ export default function Edit{{modelName}}() {
         title='แก้ไข{{thaiName}}'
         useBackButton
         isReady={ {{modelCamelCase}}.isReady }
+        hirachyList={[
+          { label: "หน้าหลัก", link: "/" },
+          { label: "{{thaiName}}", link: "/{{moduleRouterName}}/{{routerName}}" },
+        ]}
       >
         <form onSubmit={handleSubmit(handleSubmitData)}>
           <{{modelName}}Form control={control} watch={watch} defaultValue={ {{modelCamelCase}} } />

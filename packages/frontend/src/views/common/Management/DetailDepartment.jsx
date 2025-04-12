@@ -29,7 +29,11 @@ export default function DetailDepartment() {
       <MainLayout
         title='รายละเอียด'
         useBackButton
-        isReady={ department.isReady }
+        isReady={department.isReady}
+        hirachyList={[
+          { label: "หน้าหลัก", link: "/" },
+          { label: "แผนก", link: "/management/department" },
+        ]}
       >
         <Paper shadow='sm' p='xl'>
           <div className='flex flex-wrap'>

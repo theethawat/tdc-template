@@ -50,6 +50,10 @@ export default function EditPassword() {
         useBackButton
         // ใส่สถานะไว้ ระบบจะขึ้น Loading เป็นอัตโนมัติถ้ามันยังไม่ Ready
         isReady={user.isReady}
+        hirachyList={[
+          { label: "หน้าหลัก", link: "/" },
+          { label: "ผู้ใช้งาน", link: "/management/user" },
+        ]}
       >
         <form onSubmit={handleSubmit(handleSubmitData)}>
           <div>แก้ไขรหัสผ่านสำหรับ {user?.name}</div>

@@ -28,7 +28,14 @@ export default function CreateDepartment() {
   };
   return (
     <div>
-      <MainLayout title='เพิ่มแผนก' useBackButton>
+      <MainLayout
+        title='เพิ่มแผนก'
+        useBackButton
+        hirachyList={[
+          { label: "หน้าหลัก", link: "/" },
+          { label: "แผนก", link: "/management/department" },
+        ]}
+      >
         <form onSubmit={handleSubmit(handleSubmitData)}>
           <DepartmentForm control={control} watch={watch} />
 

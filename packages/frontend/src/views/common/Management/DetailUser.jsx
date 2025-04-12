@@ -31,6 +31,10 @@ export default function DetailUser() {
         currentPage='User'
         useBackButton
         isReady={user.isReady}
+        hirachyList={[
+          { label: "หน้าหลัก", link: "/" },
+          { label: "ผู้ใช้งาน", link: "/management/user" },
+        ]}
       >
         <Paper shadow='sm' p='xl'>
           <div className='flex flex-wrap'>

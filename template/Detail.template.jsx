@@ -30,6 +30,10 @@ export default function Detail{{modelName}}() {
         title='รายละเอียด{{modelThaiName}}'
         useBackButton
         isReady={ {{modelCamelCase}}.isReady }
+        hirachyList={[
+          { label: "หน้าหลัก", link: "/" },
+          { label: "{{thaiName}}", link: "/{{moduleRouterName}}/{{routerName}}" },
+        ]}
       >
         <Paper shadow='sm' p='xl'>
           <div className='flex flex-wrap'>

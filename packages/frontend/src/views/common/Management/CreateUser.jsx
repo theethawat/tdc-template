@@ -28,7 +28,15 @@ export default function CreateUser() {
   };
   return (
     <div>
-      <MainLayout title='เพิ่มผู้ใช้งาน' currentPage='User' useBackButton>
+      <MainLayout
+        title='เพิ่มผู้ใช้งาน'
+        currentPage='User'
+        useBackButton
+        hirachyList={[
+          { label: "หน้าหลัก", link: "/" },
+          { label: "ผู้ใช้งาน", link: "/management/user" },
+        ]}
+      >
         <form onSubmit={handleSubmit(handleSubmitData)}>
           <UserForm control={control} watch={watch} showPasswordInput />
 

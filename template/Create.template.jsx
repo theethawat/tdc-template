@@ -28,7 +28,11 @@ export default function Create{{modelName}}() {
   };
   return (
     <div>
-      <MainLayout title='เพิ่ม{{thaiName}}' useBackButton>
+      <MainLayout title='เพิ่ม{{thaiName}}' useBackButton        
+      hirachyList={[
+        { label: "หน้าหลัก", link: "/" },
+        { label: "{{thaiName}}", link: "/{{moduleRouterName}}/{{routerName}}" },
+      ]}>
         <form onSubmit={handleSubmit(handleSubmitData)}>
           <{{modelName}}Form control={control} watch={watch} />
 

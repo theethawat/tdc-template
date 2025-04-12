@@ -22,7 +22,7 @@ export default function NoSidebarLayout({
     <div>
       <NavHeader userData={me} currentPage={currentPage} forceDisplay={true} />
       <div className='min-h-screen'>
-        <div className='w-full py-6 md:mx-12  container px-4 lg:px-8'>
+        <div className='w-full py-6 px-16 md:px-24 lg:px-48  container'>
           <div className='flex justify-between w-full '>
             <div className='w-3/5 '>
               <h1 className='text-2xl  ml-2 font-display font-bold text-gray-900'>
